@@ -7,6 +7,4 @@ stories:
   - intent: greet
   - action: utter_greet
   - intent: find_feature
-  - action: utter_find_app_by_feature
-  - intent: specify_feature
-  - action: utter_launch_app
+  - action: action_query_knowledge_base

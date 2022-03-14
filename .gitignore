@@ -1,0 +1,5 @@
+venv/
+Node-Backend/
+.rasa/
+.cache/
+.local/

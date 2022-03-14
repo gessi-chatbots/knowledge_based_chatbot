@@ -15,8 +15,38 @@ responses:
   utter_launch_app:
   - text: "identified action launch_app"
 
+  utter_ask_rephrase:
+  - text: "Sorry, I'm not sure I understand. Can you rephrase?"
+  - text: "Can you please rephrase? I did not got that."
+  
 entities:
+- features
 - feature
+- object_type
+- attribute
+
+slots:
+  object_type:
+    type: text
+    influence_conversation: false
+    mappings: 
+      - type: from_entity
+        entity: object_type
+  attribute: 
+    type: text
+    influence_conversation: false
+    mappings: 
+      - type: from_entity
+        entity: attribute
+  features:
+    type: text
+    influence_conversation: false
+    mappings: 
+      - type: from_entity
+        entity: features
+
+actions:
+- action_query_knowledge_base
 
 #actions:
 #- action_find_app_by_feature

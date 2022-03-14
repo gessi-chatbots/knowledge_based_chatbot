@@ -7,3 +7,7 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: query knowledge base
+  steps:
+    - intent: query_knowledge_base
+    - action: action_query_knowledge_base
