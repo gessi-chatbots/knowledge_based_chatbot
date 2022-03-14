@@ -29,6 +29,7 @@ slots:
   object_type:
     type: text
     influence_conversation: false
+    initial_value: "apps"
     mappings: 
       - type: from_entity
         entity: object_type
