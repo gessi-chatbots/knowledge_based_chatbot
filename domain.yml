@@ -24,6 +24,7 @@ entities:
 - feature
 - object_type
 - attribute
+- mention
 
 slots:
   object_type:
@@ -45,6 +46,12 @@ slots:
     mappings: 
       - type: from_entity
         entity: features
+  mention:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: mention
 
 actions:
 - action_query_knowledge_base

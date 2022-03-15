@@ -9,5 +9,5 @@ rules:
 
 - rule: query knowledge base
   steps:
-    - intent: query_knowledge_base
+    - intent: find_feature
     - action: action_query_knowledge_base
