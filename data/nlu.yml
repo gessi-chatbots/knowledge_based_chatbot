@@ -19,22 +19,17 @@ nlu:
 
 - intent: find_feature
   examples: |
-    - I want to enable [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - enable [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - turn on [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - authorize [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - Ask [app] {"entity": "object_type", "value": "apps"} to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - I want [app]{"entity": "object_type", "value": "apps"} to enable [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - enable [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - activate [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - turn on [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
-    - authorize [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [GPS Navigation](features)
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [GPS Navigation](features)
+    - enable [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
+    - activate [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
+    - turn on [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
+    - authorize [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
     
 - intent: specify_feature
   examples: |
-    - Whichever has [real-time traffic] (feature)
-    - The one with [real-time traffic] (feature)
-    - with [real-time traffic] (feature)
-    - Is there one with [real-time traffic] (feature)?
+    - Whichever has [real-time traffic](feature)
+    - The one with [real-time traffic](feature)
+    - with [real-time traffic](feature)
+    - Is there one with [real-time traffic](feature)?
     
