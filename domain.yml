@@ -7,7 +7,7 @@ intents:
 
 responses:
   utter_greet:
-  - text: "Hello! I am a mobile app assistant. Which features do you need help with? "
+  - text: "Hello! I am a mobile app assistant. Which features do you need help with?"
 
   utter_find_app_by_feature:
   - text: "identified action find_app_by_feature"
@@ -21,7 +21,6 @@ responses:
   
 entities:
 - features
-- feature
 - object_type
 - attribute
 - mention
@@ -30,7 +29,6 @@ slots:
   object_type:
     type: text
     influence_conversation: false
-    initial_value: "apps"
     mappings: 
       - type: from_entity
         entity: object_type

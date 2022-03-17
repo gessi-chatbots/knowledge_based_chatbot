@@ -38,9 +38,3 @@ nlu:
     - with [real-time traffic] (feature)
     - Is there one with [real-time traffic] (feature)?
     
-- lookup: apps
-  examples: |
-    - OsmAnd
-    - Etar
-    - Simple Calendar
-    - Organic Maps
