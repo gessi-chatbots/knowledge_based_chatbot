@@ -3,99 +3,22 @@
         {
             "id": 0,
             "name": "OsmAnd",
-            "features": [
-                "Works Offline",
-                "Apps with Offline Map",
-                "Based on OpenStreetMap",
-                "Customizable",
-                "GPS Navigation",
-                "Route optimization",
-                "Cycling",
-                "Points of interest (POI)",
-                "GPS Location Tracking",
-                "Exclude paths/places from route",
-                "Wikipedia integration",
-                "Track gps location",
-                "Natural, landscape and forest pathways",
-                "Night mode/Dark Theme",
-                "User generated",
-                "OSM-based",
-                "Text to Speech",
-                "Real-time traffic",
-                "Driving directions",
-                "Record Tracks",
-                "offline-navigation",
-                "Map",
-                "biking-maps",
-                "share-location",
-                "voice-navigation",
-                "find-parking",
-                "maps-navigation-trips",
-                "map-viewer"
-            ]
+            "features": "GPS Navigation"
         },
         {
             "id": 1,
             "name": "Etar",
-            "features": [
-                "Calendar",
-                "Material design",
-                "Lightweight",
-                "Privacy focused",
-                "Ad-free",
-                "GPS Location Tracking",
-                "event-calendar",
-                "open-source-projects",
-                "calendar-events"
-            ]
+            "features": "Calendar"
         },
         {
             "id": 2,
             "name": "Simple Calendar",
-            "features": [
-                "Calendar",
-                "Notifications",
-                "Support for WebDAV",
-                "Customizable",
-                "Built-in Calendar",
-                "Events",
-                "reminder"
-            ]
+            "features": "Calendar"
         },
         {
             "id": 3,
             "name": "Organic Maps",
-            "features": [
-                "Based on OpenStreetMap",
-                "Works Offline",
-                "GPS Navigation",
-                "No Tracking",
-                "Cycling",
-                "Bookmarks",
-                "Night mode/Dark Theme",
-                "Nearby Search",
-                "Offline search",
-                "User generated",
-                "Turn-by-turn Navigation",
-                "Privacy focused",
-                "Public transportation",
-                "Offline routing",
-                "Apps with Offline Map",
-                "Location-based",
-                "Hiking Maps",
-                "Driving directions",
-                "Route optimization",
-                "Route Planning",
-                "biking-maps",
-                "hiking",
-                "Map",
-                "route-navigation",
-                "Mapping",
-                "maps-navigation",
-                "gps-with-voice-navigation",
-                "bike",
-                "walking-navigation"
-            ]
+            "features": "GPS Navigation"
         }
     ]
 }

@@ -29,6 +29,7 @@ slots:
   object_type:
     type: text
     influence_conversation: false
+    initial_value: apps
     mappings: 
       - type: from_entity
         entity: object_type
@@ -41,6 +42,7 @@ slots:
   features:
     type: text
     influence_conversation: false
+    initial_value: GPS Navigation
     mappings: 
       - type: from_entity
         entity: features
