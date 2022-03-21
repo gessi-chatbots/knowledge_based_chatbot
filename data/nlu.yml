@@ -37,4 +37,11 @@ nlu:
     - Open [OsmAnd](name)
     - Please open [OsmAnd](name)
     - Please launch [OsmAnd](name)
+    - the [first]{"entity": "mention", "value": "1"} one 
+    - The [second]{"entity": "mention", "value": "2"} one
+    - The [ninth]{"entity": "mention", "value": "9"} one
+    - number [1](mention)
+    - number [2](mention)   
+    - the [last]{"entity": "mention", "value": "LAST"} one 
+    - [any]{"entity": "mention", "value": "ANY"} of them will do
     
