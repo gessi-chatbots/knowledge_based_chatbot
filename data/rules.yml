@@ -10,4 +10,9 @@ rules:
 - rule: query knowledge base
   steps:
     - intent: find_feature
-    - action: action_query_knowledge_base
+    - action: action_find_feature
+
+- rule: query filter knowledge base
+  steps:
+    - intent: specify_feature
+    - action: action_launch_app

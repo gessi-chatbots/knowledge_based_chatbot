@@ -28,8 +28,8 @@ nlu:
     
 - intent: specify_feature
   examples: |
-    - Whichever has [real-time traffic](feature)
-    - The one with [real-time traffic](feature)
-    - with [real-time traffic](feature)
-    - Is there one with [real-time traffic](feature)?
+    - Whichever has [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+    - The one with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+    - with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+    - Is there one with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}?
     

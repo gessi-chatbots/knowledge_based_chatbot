@@ -52,7 +52,8 @@ slots:
       entity: mention
 
 actions:
-- action_query_knowledge_base
+- action_find_feature
+- action_launch_app
 
 #actions:
 #- action_find_app_by_feature

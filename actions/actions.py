@@ -1,35 +1,66 @@
-# This files contains your custom actions which can be used to run
-# custom Python code.
-#
-# See this guide on how to implement these action:
-# https://rasa.com/docs/rasa/custom-actions
+from asyncore import dispatcher
+from typing import Any, Text, Dict, List
 
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
 
-# This is a simple example for a custom action which utters "Hello World!"
+import json 
+class ActionQueryKnowledgeBase(Action):
+    def __init__(self): 
+        with open('rasa_knowledge_base.json', 'r') as f:
+            self.data = json.load(f)
+            ActionQueryKnowledgeBase.currentApps = []
+    
+    def name(self):
+        return 'action_query_data_base'
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
-# class ActionHelloWorld(Action):
-#
-#     def name(self) -> Text:
-#         return "action_hello_world"
-#
-#     def run(self, dispatcher: CollectingDispatcher,
-#             tracker: Tracker,
-#             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-#
-#         dispatcher.utter_message(text="Hello World!")
-#
-#         return []
+    def searchInApps(self, header, value) -> None:
+        ActionQueryKnowledgeBase.currentApps = []
+        for x in self.data['apps']:
+            if value in x[header]:
+                ActionQueryKnowledgeBase.currentApps.append(x)
+    
+    def filterCurrentApps(self, header, value) -> None:
+        filteredApps = []
+        for x in self.currentApps:
+            if value in x[header]:
+                filteredApps.append(x)
+        ActionQueryKnowledgeBase.currentApps = filteredApps
 
-from rasa_sdk.knowledge_base.storage import InMemoryKnowledgeBase
-from rasa_sdk.knowledge_base.actions import ActionQueryKnowledgeBase
+    def dispatchAppInfo(self) -> Text:
+        size = len(ActionQueryKnowledgeBase.currentApps)
+        text = ""
+        if (size == 0): 
+            text = "Sorry, I couldn't find any apps with those features!"
+        elif (size == 1): 
+            text = "Great! Then let's launch " + ActionQueryKnowledgeBase.currentApps[0]['name'] + "!\n"
+        else: 
+            text = "Sure! I see you have multiple apps with this feature:\n"
+            i = 1
+            for x in ActionQueryKnowledgeBase.currentApps:
+                text += str(i) + ". " + x['name'] + " \n"
+                i += 1
+            text += "Do you wish to use any app in particular?\n"
+        return text
 
-class MyKnowledgeBaseAction(ActionQueryKnowledgeBase):
-    def __init__(self):
-        knowledge_base = InMemoryKnowledgeBase("rasa_knowledge_base.json")
-        super().__init__(knowledge_base) 
+class findFeautre(ActionQueryKnowledgeBase):
+    def name(self):
+        return 'action_find_feature'
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        obj = tracker.latest_message['entities'][0]
+        super().searchInApps(obj['entity'], obj['value'])
+        dispatcher.utter_message(text=super().dispatchAppInfo())
+        
+class filterFeature(ActionQueryKnowledgeBase):
+    def name(self):
+        return 'action_launch_app'
+    
+    def run(self, dispatcher: CollectingDispatcher,
+            tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        obj = tracker.latest_message['entities'][0]
+        super().filterCurrentApps(obj['entity'], obj['value'])
+        dispatcher.utter_message(text=super().dispatchAppInfo())
