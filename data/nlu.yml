@@ -21,15 +21,20 @@ nlu:
   examples: |
     - Ask [app]{"entity": "object_type", "value": "apps"} to activate [GPS Navigation](features)
     - I want [app]{"entity": "object_type", "value": "apps"} to enable [GPS Navigation](features)
-    - enable [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
-    - activate [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
-    - turn on [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
-    - authorize [apps]{"entity": "object_type", "value": "apps"} [GPS Navigation](features)
+    - enable [apps](object_type) [GPS Navigation](features)
+    - activate [apps](object_type) [GPS Navigation](features)
+    - turn on [apps](object_type) [GPS Navigation](features)
+    - authorize [apps](object_type) [GPS Navigation](features)
     
 - intent: specify_feature
   examples: |
     - Whichever has [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
     - The one with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
     - with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
-    - Is there one with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}?
+    - Is there one with [real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+    - I want to launch [OsmAnd](name)
+    - Launch [OsmAnd](name)
+    - Open [OsmAnd](name)
+    - Please open [OsmAnd](name)
+    - Please launch [OsmAnd](name)
     

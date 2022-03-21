@@ -24,6 +24,7 @@ entities:
 - object_type
 - attribute
 - mention
+- name
 
 slots:
   object_type:
@@ -44,6 +45,12 @@ slots:
     mappings: 
       - type: from_entity
         entity: features
+  name:
+    type: text
+    influence_conversation: false
+    mappings: 
+      - type: from_entity
+        entity: name
   mention:
     type: text
     influence_conversation: false
@@ -54,10 +61,6 @@ slots:
 actions:
 - action_find_feature
 - action_launch_app
-
-#actions:
-#- action_find_app_by_feature
-#- action_launch_app
 
 session_config:
   session_expiration_time: 60

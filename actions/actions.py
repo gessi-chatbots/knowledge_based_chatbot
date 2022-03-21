@@ -1,5 +1,6 @@
 from asyncore import dispatcher
 from typing import Any, Text, Dict, List
+from xmlrpc.client import boolean
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
@@ -10,6 +11,7 @@ class ActionQueryKnowledgeBase(Action):
         with open('rasa_knowledge_base.json', 'r') as f:
             self.data = json.load(f)
             ActionQueryKnowledgeBase.currentApps = []
+            self.possibleHeaders = self.data['apps'][0].keys()
     
     def name(self):
         return 'action_query_data_base'
@@ -42,6 +44,9 @@ class ActionQueryKnowledgeBase(Action):
                 i += 1
             text += "Do you wish to use any app in particular?\n"
         return text
+    
+    def inHeaders(self, header) -> boolean:
+        return header in self.possibleHeaders
 
 class findFeautre(ActionQueryKnowledgeBase):
     def name(self):
@@ -50,8 +55,15 @@ class findFeautre(ActionQueryKnowledgeBase):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        obj = tracker.latest_message['entities'][0]
-        super().searchInApps(obj['entity'], obj['value'])
+        filter = False
+        for obj in tracker.latest_message['entities']:
+            if not (super().inHeaders(obj['entity'])): continue
+            if filter:
+                super().filterCurrentApps(obj['entity'], obj['value'])
+            else:
+                filter = True
+                super().searchInApps(obj['entity'], obj['value'])
+
         dispatcher.utter_message(text=super().dispatchAppInfo())
         
 class filterFeature(ActionQueryKnowledgeBase):
@@ -61,6 +73,7 @@ class filterFeature(ActionQueryKnowledgeBase):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        obj = tracker.latest_message['entities'][0]
-        super().filterCurrentApps(obj['entity'], obj['value'])
+        for obj in tracker.latest_message['entities']:
+            if not (super().inHeaders(obj['entity'])): continue
+            super().searchInApps(obj['entity'], obj['value'])
         dispatcher.utter_message(text=super().dispatchAppInfo())
