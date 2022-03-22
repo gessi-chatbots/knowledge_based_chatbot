@@ -6,7 +6,9 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 
 import json 
+#reimplementation of ActionQueryKnowledgeBase
 class ActionQueryKnowledgeBase(Action):
+    #initiates data from knowledge base json file
     def __init__(self): 
         with open('rasa_knowledge_base.json', 'r') as f:
             self.data = json.load(f)
@@ -27,17 +29,19 @@ class ActionQueryKnowledgeBase(Action):
         }
 
             ActionQueryKnowledgeBase.currentApps = []
-            self.possibleHeaders = self.data['apps'][0].keys()
     
+    #default name for action
     def name(self):
         return 'action_query_data_base'
 
+    # search without filter --> override apps in action
     def searchInApps(self, header, value) -> None:
         ActionQueryKnowledgeBase.currentApps = []
         for x in self.data['apps']:
             if value in x[header]:
                 ActionQueryKnowledgeBase.currentApps.append(x)
     
+    # filter apps when already initialized
     def filterCurrentApps(self, header, value) -> None:
         filteredApps = []
         for x in self.currentApps:
@@ -45,6 +49,7 @@ class ActionQueryKnowledgeBase(Action):
                 filteredApps.append(x)
         ActionQueryKnowledgeBase.currentApps = filteredApps
 
+    # structure message utter
     def dispatchAppInfo(self) -> Text:
         size = len(ActionQueryKnowledgeBase.currentApps)
         text = ""
@@ -61,9 +66,11 @@ class ActionQueryKnowledgeBase(Action):
             text += "Do you wish to use any app in particular?\n"
         return text
     
+    # check if an item is in the headers i.e. can be filtered by
     def inHeaders(self, header) -> boolean:
-        return header in self.possibleHeaders
+        return header in self.data['apps'][0].keys()
     
+    # if the mention isn't valid, invalidate search otherwise return correct app
     def treatMention(self, value) -> None:
         if not (value in self.ordinal_mention_mapping.keys()):
             #change to error mapping
