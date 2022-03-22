@@ -13,22 +13,12 @@ class ActionQueryKnowledgeBase(Action):
         with open('rasa_knowledge_base.json', 'r') as f:
             self.data = json.load(f)
 
-            self.ordinal_mention_mapping = {
-            "1": lambda l: l[0],
-            "2": lambda l: l[1],
-            "3": lambda l: l[2],
-            "4": lambda l: l[3],
-            "5": lambda l: l[4],
-            "6": lambda l: l[5],
-            "7": lambda l: l[6],
-            "8": lambda l: l[7],
-            "9": lambda l: l[8],
-            "10": lambda l: l[9],
+        self.ordinal_mention_mapping = {
             "ANY": lambda l: random.choice(l),
             "LAST": lambda l: l[-1],
         }
 
-            ActionQueryKnowledgeBase.currentApps = []
+        ActionQueryKnowledgeBase.currentApps = []
     
     #default name for action
     def name(self):
@@ -49,7 +39,7 @@ class ActionQueryKnowledgeBase(Action):
                 filteredApps.append(x)
         ActionQueryKnowledgeBase.currentApps = filteredApps
 
-    # structure message utter
+    # structure message to utter
     def dispatchAppInfo(self) -> Text:
         size = len(ActionQueryKnowledgeBase.currentApps)
         text = ""
@@ -71,13 +61,24 @@ class ActionQueryKnowledgeBase(Action):
         return header in self.data['apps'][0].keys()
     
     # if the mention isn't valid, invalidate search otherwise return correct app
-    def treatMention(self, value) -> None:
-        if not (value in self.ordinal_mention_mapping.keys()):
-            #change to error mapping
-            ActionQueryKnowledgeBase.currentApps = []
+    def treatMention(self, value) -> Text:
+        if value.isnumeric():
+            x = int(value)-1
+            print(len(ActionQueryKnowledgeBase.currentApps))
+            if x < 0 or x >= len(ActionQueryKnowledgeBase.currentApps):
+                print("here")
+                aux = []
+                return "Incorrect value for given choices."
+            aux = [ActionQueryKnowledgeBase.currentApps[x]]
+        elif value in self.ordinal_mention_mapping:
+            aux = [self.ordinal_mention_mapping[value](ActionQueryKnowledgeBase.currentApps)]
         else:
-           aux = self.ordinal_mention_mapping[value](ActionQueryKnowledgeBase.currentApps)
-           ActionQueryKnowledgeBase.currentApps = [aux]
+            aux = []
+            return "Incorrect value for given choices."
+
+        ActionQueryKnowledgeBase.currentApps = aux
+        return ""
+
 
 class findFeautre(ActionQueryKnowledgeBase):
     def name(self):
@@ -104,11 +105,17 @@ class filterFeature(ActionQueryKnowledgeBase):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        print(tracker.latest_message['entities'])
         for obj in tracker.latest_message['entities']:
             if obj["entity"] == "mention":
-                super().treatMention(obj["value"])
-                continue
-            if not (super().inHeaders(obj['entity'])): continue
-            super().searchInApps(obj['entity'], obj['value'])
-        dispatcher.utter_message(text=super().dispatchAppInfo())
+                err = super().treatMention(obj["value"])
+                if err != "": 
+                    dispatcher.utter_message(text=err)
+                    return None    
+            else:
+                if super().inHeaders(obj['entity']):
+                    super().searchInApps(obj['entity'], obj['value'])
+                else: 
+                    dispatcher.utter_message(text="No available filters.")
+                    return None
+            
+            dispatcher.utter_message(text=super().dispatchAppInfo())
