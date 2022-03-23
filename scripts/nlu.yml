@@ -1,0 +1,631 @@
+version: '3.0' 
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: find_feature
+  examples: |
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Offline search]{"entity": "features", "value": "Offline search"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [User generated]{"entity": "features", "value": "User generated"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Adfree]{"entity": "features", "value": "Adfree"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [findparking]{"entity": "features", "value": "findparking"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [reminder]{"entity": "features", "value": "reminder"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [bike]{"entity": "features", "value": "bike"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Customizable]{"entity": "features", "value": "Customizable"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Map]{"entity": "features", "value": "Map"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Notifications]{"entity": "features", "value": "Notifications"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Material design]{"entity": "features", "value": "Material design"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Cycling]{"entity": "features", "value": "Cycling"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Calendar]{"entity": "features", "value": "Calendar"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [hiking]{"entity": "features", "value": "hiking"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Events]{"entity": "features", "value": "Events"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Mapping]{"entity": "features", "value": "Mapping"}
+    - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Offline search]{"entity": "features", "value": "Offline search"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [User generated]{"entity": "features", "value": "User generated"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Adfree]{"entity": "features", "value": "Adfree"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [findparking]{"entity": "features", "value": "findparking"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [reminder]{"entity": "features", "value": "reminder"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [bike]{"entity": "features", "value": "bike"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Customizable]{"entity": "features", "value": "Customizable"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Map]{"entity": "features", "value": "Map"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Notifications]{"entity": "features", "value": "Notifications"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Material design]{"entity": "features", "value": "Material design"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Cycling]{"entity": "features", "value": "Cycling"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Calendar]{"entity": "features", "value": "Calendar"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [hiking]{"entity": "features", "value": "hiking"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Events]{"entity": "features", "value": "Events"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Mapping]{"entity": "features", "value": "Mapping"}
+    - I want [app]{"entity": "object_type", "value": "apps"} to enable [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - enable [apps](object_type) [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - enable [apps](object_type) [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - enable [apps](object_type) [Offline search]{"entity": "features", "value": "Offline search"}
+    - enable [apps](object_type) [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - enable [apps](object_type) [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - enable [apps](object_type) [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - enable [apps](object_type) [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - enable [apps](object_type) [User generated]{"entity": "features", "value": "User generated"}
+    - enable [apps](object_type) [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - enable [apps](object_type) [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - enable [apps](object_type) [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - enable [apps](object_type) [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - enable [apps](object_type) [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - enable [apps](object_type) [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - enable [apps](object_type) [Adfree]{"entity": "features", "value": "Adfree"}
+    - enable [apps](object_type) [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - enable [apps](object_type) [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - enable [apps](object_type) [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - enable [apps](object_type) [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - enable [apps](object_type) [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - enable [apps](object_type) [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - enable [apps](object_type) [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - enable [apps](object_type) [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - enable [apps](object_type) [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - enable [apps](object_type) [findparking]{"entity": "features", "value": "findparking"}
+    - enable [apps](object_type) [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - enable [apps](object_type) [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - enable [apps](object_type) [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - enable [apps](object_type) [reminder]{"entity": "features", "value": "reminder"}
+    - enable [apps](object_type) [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - enable [apps](object_type) [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - enable [apps](object_type) [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - enable [apps](object_type) [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - enable [apps](object_type) [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - enable [apps](object_type) [bike]{"entity": "features", "value": "bike"}
+    - enable [apps](object_type) [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - enable [apps](object_type) [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - enable [apps](object_type) [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - enable [apps](object_type) [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - enable [apps](object_type) [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - enable [apps](object_type) [Customizable]{"entity": "features", "value": "Customizable"}
+    - enable [apps](object_type) [Map]{"entity": "features", "value": "Map"}
+    - enable [apps](object_type) [Notifications]{"entity": "features", "value": "Notifications"}
+    - enable [apps](object_type) [Material design]{"entity": "features", "value": "Material design"}
+    - enable [apps](object_type) [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - enable [apps](object_type) [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - enable [apps](object_type) [Cycling]{"entity": "features", "value": "Cycling"}
+    - enable [apps](object_type) [Calendar]{"entity": "features", "value": "Calendar"}
+    - enable [apps](object_type) [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - enable [apps](object_type) [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - enable [apps](object_type) [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - enable [apps](object_type) [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - enable [apps](object_type) [hiking]{"entity": "features", "value": "hiking"}
+    - enable [apps](object_type) [Events]{"entity": "features", "value": "Events"}
+    - enable [apps](object_type) [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - enable [apps](object_type) [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - enable [apps](object_type) [Mapping]{"entity": "features", "value": "Mapping"}
+    - enable [apps](object_type) [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - activate [apps](object_type) [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - activate [apps](object_type) [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - activate [apps](object_type) [Offline search]{"entity": "features", "value": "Offline search"}
+    - activate [apps](object_type) [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - activate [apps](object_type) [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - activate [apps](object_type) [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - activate [apps](object_type) [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - activate [apps](object_type) [User generated]{"entity": "features", "value": "User generated"}
+    - activate [apps](object_type) [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - activate [apps](object_type) [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - activate [apps](object_type) [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - activate [apps](object_type) [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - activate [apps](object_type) [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - activate [apps](object_type) [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - activate [apps](object_type) [Adfree]{"entity": "features", "value": "Adfree"}
+    - activate [apps](object_type) [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - activate [apps](object_type) [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - activate [apps](object_type) [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - activate [apps](object_type) [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - activate [apps](object_type) [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - activate [apps](object_type) [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - activate [apps](object_type) [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - activate [apps](object_type) [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - activate [apps](object_type) [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - activate [apps](object_type) [findparking]{"entity": "features", "value": "findparking"}
+    - activate [apps](object_type) [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - activate [apps](object_type) [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - activate [apps](object_type) [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - activate [apps](object_type) [reminder]{"entity": "features", "value": "reminder"}
+    - activate [apps](object_type) [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - activate [apps](object_type) [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - activate [apps](object_type) [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - activate [apps](object_type) [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - activate [apps](object_type) [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - activate [apps](object_type) [bike]{"entity": "features", "value": "bike"}
+    - activate [apps](object_type) [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - activate [apps](object_type) [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - activate [apps](object_type) [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - activate [apps](object_type) [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - activate [apps](object_type) [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - activate [apps](object_type) [Customizable]{"entity": "features", "value": "Customizable"}
+    - activate [apps](object_type) [Map]{"entity": "features", "value": "Map"}
+    - activate [apps](object_type) [Notifications]{"entity": "features", "value": "Notifications"}
+    - activate [apps](object_type) [Material design]{"entity": "features", "value": "Material design"}
+    - activate [apps](object_type) [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - activate [apps](object_type) [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - activate [apps](object_type) [Cycling]{"entity": "features", "value": "Cycling"}
+    - activate [apps](object_type) [Calendar]{"entity": "features", "value": "Calendar"}
+    - activate [apps](object_type) [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - activate [apps](object_type) [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - activate [apps](object_type) [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - activate [apps](object_type) [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - activate [apps](object_type) [hiking]{"entity": "features", "value": "hiking"}
+    - activate [apps](object_type) [Events]{"entity": "features", "value": "Events"}
+    - activate [apps](object_type) [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - activate [apps](object_type) [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - activate [apps](object_type) [Mapping]{"entity": "features", "value": "Mapping"}
+    - activate [apps](object_type) [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - turn on [apps](object_type) [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - turn on [apps](object_type) [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - turn on [apps](object_type) [Offline search]{"entity": "features", "value": "Offline search"}
+    - turn on [apps](object_type) [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - turn on [apps](object_type) [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - turn on [apps](object_type) [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - turn on [apps](object_type) [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - turn on [apps](object_type) [User generated]{"entity": "features", "value": "User generated"}
+    - turn on [apps](object_type) [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - turn on [apps](object_type) [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - turn on [apps](object_type) [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - turn on [apps](object_type) [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - turn on [apps](object_type) [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - turn on [apps](object_type) [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - turn on [apps](object_type) [Adfree]{"entity": "features", "value": "Adfree"}
+    - turn on [apps](object_type) [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - turn on [apps](object_type) [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - turn on [apps](object_type) [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - turn on [apps](object_type) [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - turn on [apps](object_type) [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - turn on [apps](object_type) [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - turn on [apps](object_type) [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - turn on [apps](object_type) [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - turn on [apps](object_type) [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - turn on [apps](object_type) [findparking]{"entity": "features", "value": "findparking"}
+    - turn on [apps](object_type) [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - turn on [apps](object_type) [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - turn on [apps](object_type) [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - turn on [apps](object_type) [reminder]{"entity": "features", "value": "reminder"}
+    - turn on [apps](object_type) [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - turn on [apps](object_type) [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - turn on [apps](object_type) [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - turn on [apps](object_type) [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - turn on [apps](object_type) [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - turn on [apps](object_type) [bike]{"entity": "features", "value": "bike"}
+    - turn on [apps](object_type) [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - turn on [apps](object_type) [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - turn on [apps](object_type) [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - turn on [apps](object_type) [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - turn on [apps](object_type) [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - turn on [apps](object_type) [Customizable]{"entity": "features", "value": "Customizable"}
+    - turn on [apps](object_type) [Map]{"entity": "features", "value": "Map"}
+    - turn on [apps](object_type) [Notifications]{"entity": "features", "value": "Notifications"}
+    - turn on [apps](object_type) [Material design]{"entity": "features", "value": "Material design"}
+    - turn on [apps](object_type) [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - turn on [apps](object_type) [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - turn on [apps](object_type) [Cycling]{"entity": "features", "value": "Cycling"}
+    - turn on [apps](object_type) [Calendar]{"entity": "features", "value": "Calendar"}
+    - turn on [apps](object_type) [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - turn on [apps](object_type) [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - turn on [apps](object_type) [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - turn on [apps](object_type) [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - turn on [apps](object_type) [hiking]{"entity": "features", "value": "hiking"}
+    - turn on [apps](object_type) [Events]{"entity": "features", "value": "Events"}
+    - turn on [apps](object_type) [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - turn on [apps](object_type) [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - turn on [apps](object_type) [Mapping]{"entity": "features", "value": "Mapping"}
+    - turn on [apps](object_type) [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - authorize [apps](object_type) [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - authorize [apps](object_type) [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - authorize [apps](object_type) [Offline search]{"entity": "features", "value": "Offline search"}
+    - authorize [apps](object_type) [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - authorize [apps](object_type) [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - authorize [apps](object_type) [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - authorize [apps](object_type) [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - authorize [apps](object_type) [User generated]{"entity": "features", "value": "User generated"}
+    - authorize [apps](object_type) [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - authorize [apps](object_type) [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - authorize [apps](object_type) [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - authorize [apps](object_type) [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - authorize [apps](object_type) [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - authorize [apps](object_type) [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - authorize [apps](object_type) [Adfree]{"entity": "features", "value": "Adfree"}
+    - authorize [apps](object_type) [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - authorize [apps](object_type) [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - authorize [apps](object_type) [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - authorize [apps](object_type) [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - authorize [apps](object_type) [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - authorize [apps](object_type) [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - authorize [apps](object_type) [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - authorize [apps](object_type) [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - authorize [apps](object_type) [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - authorize [apps](object_type) [findparking]{"entity": "features", "value": "findparking"}
+    - authorize [apps](object_type) [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - authorize [apps](object_type) [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - authorize [apps](object_type) [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - authorize [apps](object_type) [reminder]{"entity": "features", "value": "reminder"}
+    - authorize [apps](object_type) [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - authorize [apps](object_type) [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - authorize [apps](object_type) [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - authorize [apps](object_type) [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - authorize [apps](object_type) [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - authorize [apps](object_type) [bike]{"entity": "features", "value": "bike"}
+    - authorize [apps](object_type) [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - authorize [apps](object_type) [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - authorize [apps](object_type) [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - authorize [apps](object_type) [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - authorize [apps](object_type) [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - authorize [apps](object_type) [Customizable]{"entity": "features", "value": "Customizable"}
+    - authorize [apps](object_type) [Map]{"entity": "features", "value": "Map"}
+    - authorize [apps](object_type) [Notifications]{"entity": "features", "value": "Notifications"}
+    - authorize [apps](object_type) [Material design]{"entity": "features", "value": "Material design"}
+    - authorize [apps](object_type) [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - authorize [apps](object_type) [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - authorize [apps](object_type) [Cycling]{"entity": "features", "value": "Cycling"}
+    - authorize [apps](object_type) [Calendar]{"entity": "features", "value": "Calendar"}
+    - authorize [apps](object_type) [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - authorize [apps](object_type) [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - authorize [apps](object_type) [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - authorize [apps](object_type) [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - authorize [apps](object_type) [hiking]{"entity": "features", "value": "hiking"}
+    - authorize [apps](object_type) [Events]{"entity": "features", "value": "Events"}
+    - authorize [apps](object_type) [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - authorize [apps](object_type) [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - authorize [apps](object_type) [Mapping]{"entity": "features", "value": "Mapping"}
+    - authorize [apps](object_type) [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+
+- intent: specify_feature
+  examples: | 
+    - Whichever has [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - Whichever has [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - Whichever has [Offline search]{"entity": "features", "value": "Offline search"}
+    - Whichever has [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - Whichever has [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - Whichever has [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - Whichever has [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - Whichever has [User generated]{"entity": "features", "value": "User generated"}
+    - Whichever has [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - Whichever has [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - Whichever has [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - Whichever has [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - Whichever has [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - Whichever has [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - Whichever has [Adfree]{"entity": "features", "value": "Adfree"}
+    - Whichever has [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - Whichever has [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - Whichever has [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - Whichever has [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - Whichever has [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - Whichever has [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - Whichever has [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - Whichever has [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - Whichever has [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - Whichever has [findparking]{"entity": "features", "value": "findparking"}
+    - Whichever has [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - Whichever has [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - Whichever has [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - Whichever has [reminder]{"entity": "features", "value": "reminder"}
+    - Whichever has [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - Whichever has [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - Whichever has [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - Whichever has [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - Whichever has [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - Whichever has [bike]{"entity": "features", "value": "bike"}
+    - Whichever has [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - Whichever has [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - Whichever has [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - Whichever has [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - Whichever has [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - Whichever has [Customizable]{"entity": "features", "value": "Customizable"}
+    - Whichever has [Map]{"entity": "features", "value": "Map"}
+    - Whichever has [Notifications]{"entity": "features", "value": "Notifications"}
+    - Whichever has [Material design]{"entity": "features", "value": "Material design"}
+    - Whichever has [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - Whichever has [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - Whichever has [Cycling]{"entity": "features", "value": "Cycling"}
+    - Whichever has [Calendar]{"entity": "features", "value": "Calendar"}
+    - Whichever has [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - Whichever has [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - Whichever has [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - Whichever has [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - Whichever has [hiking]{"entity": "features", "value": "hiking"}
+    - Whichever has [Events]{"entity": "features", "value": "Events"}
+    - Whichever has [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - Whichever has [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - Whichever has [Mapping]{"entity": "features", "value": "Mapping"}
+    - Whichever has [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - The one with [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - The one with [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - The one with [Offline search]{"entity": "features", "value": "Offline search"}
+    - The one with [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - The one with [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - The one with [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - The one with [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - The one with [User generated]{"entity": "features", "value": "User generated"}
+    - The one with [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - The one with [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - The one with [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - The one with [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - The one with [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - The one with [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - The one with [Adfree]{"entity": "features", "value": "Adfree"}
+    - The one with [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - The one with [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - The one with [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - The one with [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - The one with [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - The one with [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - The one with [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - The one with [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - The one with [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - The one with [findparking]{"entity": "features", "value": "findparking"}
+    - The one with [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - The one with [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - The one with [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - The one with [reminder]{"entity": "features", "value": "reminder"}
+    - The one with [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - The one with [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - The one with [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - The one with [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - The one with [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - The one with [bike]{"entity": "features", "value": "bike"}
+    - The one with [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - The one with [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - The one with [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - The one with [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - The one with [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - The one with [Customizable]{"entity": "features", "value": "Customizable"}
+    - The one with [Map]{"entity": "features", "value": "Map"}
+    - The one with [Notifications]{"entity": "features", "value": "Notifications"}
+    - The one with [Material design]{"entity": "features", "value": "Material design"}
+    - The one with [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - The one with [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - The one with [Cycling]{"entity": "features", "value": "Cycling"}
+    - The one with [Calendar]{"entity": "features", "value": "Calendar"}
+    - The one with [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - The one with [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - The one with [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - The one with [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - The one with [hiking]{"entity": "features", "value": "hiking"}
+    - The one with [Events]{"entity": "features", "value": "Events"}
+    - The one with [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - The one with [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - The one with [Mapping]{"entity": "features", "value": "Mapping"}
+    - The one with [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - with [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - with [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - with [Offline search]{"entity": "features", "value": "Offline search"}
+    - with [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - with [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - with [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - with [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - with [User generated]{"entity": "features", "value": "User generated"}
+    - with [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - with [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - with [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - with [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - with [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - with [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - with [Adfree]{"entity": "features", "value": "Adfree"}
+    - with [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - with [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - with [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - with [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - with [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - with [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - with [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - with [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - with [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - with [findparking]{"entity": "features", "value": "findparking"}
+    - with [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - with [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - with [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - with [reminder]{"entity": "features", "value": "reminder"}
+    - with [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - with [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - with [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - with [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - with [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - with [bike]{"entity": "features", "value": "bike"}
+    - with [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - with [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - with [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - with [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - with [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - with [Customizable]{"entity": "features", "value": "Customizable"}
+    - with [Map]{"entity": "features", "value": "Map"}
+    - with [Notifications]{"entity": "features", "value": "Notifications"}
+    - with [Material design]{"entity": "features", "value": "Material design"}
+    - with [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - with [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - with [Cycling]{"entity": "features", "value": "Cycling"}
+    - with [Calendar]{"entity": "features", "value": "Calendar"}
+    - with [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - with [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - with [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - with [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - with [hiking]{"entity": "features", "value": "hiking"}
+    - with [Events]{"entity": "features", "value": "Events"}
+    - with [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - with [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - with [Mapping]{"entity": "features", "value": "Mapping"}
+    - with [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - Is there one with [Public transportation]{"entity": "features", "value": "Public transportation"}
+    - Is there one with [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
+    - Is there one with [Offline search]{"entity": "features", "value": "Offline search"}
+    - Is there one with [gpswithvoicenavigation]{"entity": "features", "value": "gpswithvoicenavigation"}
+    - Is there one with [GPS Location Tracking]{"entity": "features", "value": "GPS Location Tracking"}
+    - Is there one with [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+    - Is there one with [Route optimization]{"entity": "features", "value": "Route optimization"}
+    - Is there one with [User generated]{"entity": "features", "value": "User generated"}
+    - Is there one with [Privacy focused]{"entity": "features", "value": "Privacy focused"}
+    - Is there one with [routenavigation]{"entity": "features", "value": "routenavigation"}
+    - Is there one with [Realtime traffic]{"entity": "features", "value": "Realtime traffic"}
+    - Is there one with [Night modeDark Theme]{"entity": "features", "value": "Night modeDark Theme"}
+    - Is there one with [Bookmarks]{"entity": "features", "value": "Bookmarks"}
+    - Is there one with [Record Tracks]{"entity": "features", "value": "Record Tracks"}
+    - Is there one with [Adfree]{"entity": "features", "value": "Adfree"}
+    - Is there one with [No Tracking]{"entity": "features", "value": "No Tracking"}
+    - Is there one with [bikingmaps]{"entity": "features", "value": "bikingmaps"}
+    - Is there one with [Lightweight]{"entity": "features", "value": "Lightweight"}
+    - Is there one with [Driving directions]{"entity": "features", "value": "Driving directions"}
+    - Is there one with [offlinenavigation]{"entity": "features", "value": "offlinenavigation"}
+    - Is there one with [calendarevents]{"entity": "features", "value": "calendarevents"}
+    - Is there one with [Support for WebDAV]{"entity": "features", "value": "Support for WebDAV"}
+    - Is there one with [Text to Speech]{"entity": "features", "value": "Text to Speech"}
+    - Is there one with [Locationbased]{"entity": "features", "value": "Locationbased"}
+    - Is there one with [findparking]{"entity": "features", "value": "findparking"}
+    - Is there one with [Route Planning]{"entity": "features", "value": "Route Planning"}
+    - Is there one with [OSMbased]{"entity": "features", "value": "OSMbased"}
+    - Is there one with [Exclude pathsplaces from route]{"entity": "features", "value": "Exclude pathsplaces from route"}
+    - Is there one with [reminder]{"entity": "features", "value": "reminder"}
+    - Is there one with [sharelocation]{"entity": "features", "value": "sharelocation"}
+    - Is there one with [voicenavigation]{"entity": "features", "value": "voicenavigation"}
+    - Is there one with [opensourceprojects]{"entity": "features", "value": "opensourceprojects"}
+    - Is there one with [Builtin Calendar]{"entity": "features", "value": "Builtin Calendar"}
+    - Is there one with [Offline routing]{"entity": "features", "value": "Offline routing"}
+    - Is there one with [bike]{"entity": "features", "value": "bike"}
+    - Is there one with [Works Offline]{"entity": "features", "value": "Works Offline"}
+    - Is there one with [Turnbyturn Navigation]{"entity": "features", "value": "Turnbyturn Navigation"}
+    - Is there one with [Nearby Search]{"entity": "features", "value": "Nearby Search"}
+    - Is there one with [Hiking Maps]{"entity": "features", "value": "Hiking Maps"}
+    - Is there one with [Points of interest POI]{"entity": "features", "value": "Points of interest POI"}
+    - Is there one with [Customizable]{"entity": "features", "value": "Customizable"}
+    - Is there one with [Map]{"entity": "features", "value": "Map"}
+    - Is there one with [Notifications]{"entity": "features", "value": "Notifications"}
+    - Is there one with [Material design]{"entity": "features", "value": "Material design"}
+    - Is there one with [mapsnavigationtrips]{"entity": "features", "value": "mapsnavigationtrips"}
+    - Is there one with [Based on OpenStreetMap]{"entity": "features", "value": "Based on OpenStreetMap"}
+    - Is there one with [Cycling]{"entity": "features", "value": "Cycling"}
+    - Is there one with [Calendar]{"entity": "features", "value": "Calendar"}
+    - Is there one with [mapviewer]{"entity": "features", "value": "mapviewer"}
+    - Is there one with [Apps with Offline Map]{"entity": "features", "value": "Apps with Offline Map"}
+    - Is there one with [Wikipedia integration]{"entity": "features", "value": "Wikipedia integration"}
+    - Is there one with [Track gps location]{"entity": "features", "value": "Track gps location"}
+    - Is there one with [hiking]{"entity": "features", "value": "hiking"}
+    - Is there one with [Events]{"entity": "features", "value": "Events"}
+    - Is there one with [walkingnavigation]{"entity": "features", "value": "walkingnavigation"}
+    - Is there one with [eventcalendar]{"entity": "features", "value": "eventcalendar"}
+    - Is there one with [Mapping]{"entity": "features", "value": "Mapping"}
+    - Is there one with [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
+    - I want to launch [OsmAnd]{"entity": "name", "value": "OsmAnd"}
+    - I want to launch [Etar]{"entity": "name", "value": "Etar"}
+    - I want to launch [Simple Calendar]{"entity": "name", "value": "Simple Calendar"}
+    - I want to launch [Organic Maps]{"entity": "name", "value": "Organic Maps"}
+    - Launch [OsmAnd]{"entity": "name", "value": "OsmAnd"}
+    - Launch [Etar]{"entity": "name", "value": "Etar"}
+    - Launch [Simple Calendar]{"entity": "name", "value": "Simple Calendar"}
+    - Launch [Organic Maps]{"entity": "name", "value": "Organic Maps"}
+    - Open [OsmAnd]{"entity": "name", "value": "OsmAnd"}
+    - Open [Etar]{"entity": "name", "value": "Etar"}
+    - Open [Simple Calendar]{"entity": "name", "value": "Simple Calendar"}
+    - Open [Organic Maps]{"entity": "name", "value": "Organic Maps"}
+    - Please open [OsmAnd]{"entity": "name", "value": "OsmAnd"}
+    - Please open [Etar]{"entity": "name", "value": "Etar"}
+    - Please open [Simple Calendar]{"entity": "name", "value": "Simple Calendar"}
+    - Please open [Organic Maps]{"entity": "name", "value": "Organic Maps"}
+    - Please launch [OsmAnd]{"entity": "name", "value": "OsmAnd"}
+    - Please launch [Etar]{"entity": "name", "value": "Etar"}
+    - Please launch [Simple Calendar]{"entity": "name", "value": "Simple Calendar"}
+    - Please launch [Organic Maps]{"entity": "name", "value": "Organic Maps"}
+    - the [first]{"entity": "mention", "value": "1"} one
+    - The [second]{"entity": "mention", "value": "2"} one
+    - The [ninth]{"entity": "mention", "value": "9"} one
+    - number [1](mention)
+    - number [2](mention)
+    - the [last]{"entity": "mention", "value": "LAST"} one
+    - [any]{"entity": "mention", "value": "ANY"} of them will do
