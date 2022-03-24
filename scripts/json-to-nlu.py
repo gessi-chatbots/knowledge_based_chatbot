@@ -99,4 +99,11 @@ for p in specify_feature['replace_name']:
 for p in specify_feature['no_replace']:
     f.write('    - ' + p + '\n')
 
+f.write('\n- intent: out_of_scope\n' +
+        '  examples: |\n' +
+        '    - adsfg\n' +
+        '    - I want to order good\n' +
+        '    - What is 2+2?\n' +
+        "    - Who's the US President?)\n"
+)
 f.close()

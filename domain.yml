@@ -18,6 +18,9 @@ responses:
   utter_ask_rephrase:
   - text: "Sorry, I'm not sure I understand. Can you rephrase?"
   - text: "Can you please rephrase? I did not got that."
+
+  utter_out_of_scope:
+  - text: Sorry, I can't handle that request.
   
 entities:
 - features

@@ -4,6 +4,7 @@ from xmlrpc.client import boolean
 
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import UserUtteranceReverted
 
 import json 
 #reimplementation of ActionQueryKnowledgeBase
@@ -24,6 +25,8 @@ class ActionQueryKnowledgeBase(Action):
     def name(self):
         return 'action_query_data_base'
 
+    def getCurrentAppSize() -> int:
+        return len(ActionQueryKnowledgeBase.currentApps)
     # search without filter --> override apps in action
     def searchInApps(self, header, value) -> None:
         ActionQueryKnowledgeBase.currentApps = []
@@ -119,3 +122,36 @@ class filterFeature(ActionQueryKnowledgeBase):
                     return None
             
             dispatcher.utter_message(text=super().dispatchAppInfo())
+
+# si tenim low confidence en algun cas, pero encara podem aplicar filtering, ho fem
+class ActionDefaultFallback(Action):
+    """Executes the fallback action and goes back to the previous state
+    of the dialogue"""
+
+    def name(self) -> Text:
+        return "action_default_fallback"
+
+    async def run(
+        self,
+        dispatcher: CollectingDispatcher,
+        tracker: Tracker,
+        domain: Dict[Text, Any],
+    ) -> List[Dict[Text, Any]]:
+        dispatcher.utter_message(template="my_custom_fallback_template")
+        found = False
+
+        for obj in tracker.latest_message['entities']:
+            if obj["entity"] == "mention":
+                err = super().treatMention(obj["value"])
+                if err != "": 
+                    dispatcher.utter_message(text=err)
+                    return None   
+                found = True 
+            else:
+                if super().inHeaders(obj['entity']):
+                    super().searchInApps(obj['entity'], obj['value'])
+                found = True
+
+        # Revert user message which led to fallback.
+        if (found and super().getCurrentAppSize() == 0) or (not found):
+            return [UserUtteranceReverted()]

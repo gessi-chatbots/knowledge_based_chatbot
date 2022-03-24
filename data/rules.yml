@@ -15,3 +15,14 @@ rules:
   steps:
     - intent: specify_feature
     - action: action_launch_app
+
+- rule: out-of-scope
+  steps:
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- rule: ASk user to rephrase whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_ask_rephrase
+

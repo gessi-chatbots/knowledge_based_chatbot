@@ -44,6 +44,15 @@ policies:
 #     max_history: 5
 #     epochs: 100
 #     constrain_similarities: true
-   
+- name: MemoizationPolicy
 - name: RulePolicy
-  
+  core_fallback_threshold: 0.4
+  core_fallback_action_name: "action_default_fallback"
+  enable_fallback_prediction: True
+- name: UnexpecTEDIntentPolicy
+  max_history: 5
+  epochs: 100
+- name: TEDPolicy
+  max_history: 5
+  epochs: 100
+  constrain_similarities: true

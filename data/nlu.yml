@@ -629,3 +629,10 @@ nlu:
     - number [2](mention)
     - the [last]{"entity": "mention", "value": "LAST"} one
     - [any]{"entity": "mention", "value": "ANY"} of them will do
+
+- intent: out_of_scope
+  examples: |
+    - adsfg
+    - I want to order good
+    - What is 2+2?
+    - Who's the US President?
