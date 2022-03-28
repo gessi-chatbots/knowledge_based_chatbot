@@ -8,5 +8,3 @@ stories:
   - action: utter_greet
   - intent: find_feature
   - action: action_find_feature
-  - intent: specify_feature
-  - action: action_launch_app

@@ -9,6 +9,9 @@ responses:
   utter_greet:
   - text: "Hello! I am a mobile app assistant. Which features do you need help with?"
 
+  utter_goodbye:
+    - text: "Goodbye! :)"
+
   utter_find_app_by_feature:
   - text: "identified action find_app_by_feature"
 
@@ -63,7 +66,6 @@ slots:
 
 actions:
 - action_find_feature
-- action_launch_app
 
 session_config:
   session_expiration_time: 60

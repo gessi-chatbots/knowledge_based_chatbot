@@ -367,9 +367,6 @@ nlu:
     - authorize [apps](object_type) [eventcalendar]{"entity": "features", "value": "eventcalendar"}
     - authorize [apps](object_type) [Mapping]{"entity": "features", "value": "Mapping"}
     - authorize [apps](object_type) [Natural landscape and forest pathways]{"entity": "features", "value": "Natural landscape and forest pathways"}
-
-- intent: specify_feature
-  examples: | 
     - Whichever has [Public transportation]{"entity": "features", "value": "Public transportation"}
     - Whichever has [mapsnavigation]{"entity": "features", "value": "mapsnavigation"}
     - Whichever has [Offline search]{"entity": "features", "value": "Offline search"}

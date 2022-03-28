@@ -29,7 +29,7 @@ class ActionQueryKnowledgeBase(Action):
         return 'action_query_data_base'
 
     # amount of apps after filtering
-    def getCurrentAppSize() -> int:
+    def getCurrentAppSize(self) -> int:
         return len(ActionQueryKnowledgeBase.currentApps)
 
     # search without filter --> override apps in action
@@ -99,7 +99,7 @@ class findFeautre(ActionQueryKnowledgeBase):
     def run(self, dispatcher: CollectingDispatcher,
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        filter = False
+        filter = super().getCurrentAppSize() != 0
         for obj in tracker.latest_message['entities']:
             if not (super().inHeaders(obj['entity'])): continue
             if filter:
@@ -109,28 +109,6 @@ class findFeautre(ActionQueryKnowledgeBase):
                 super().searchInApps(obj['entity'], obj['value'])
 
         dispatcher.utter_message(text=super().dispatchAppInfo())
-        
-class filterFeature(ActionQueryKnowledgeBase):
-    def name(self):
-        return 'action_launch_app'
-    
-    def run(self, dispatcher: CollectingDispatcher,
-            tracker: Tracker,
-            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
-        for obj in tracker.latest_message['entities']:
-            if obj["entity"] == "mention":
-                err = super().treatMention(obj["value"])
-                if err != "": 
-                    dispatcher.utter_message(text=err)
-                    return None    
-            else:
-                if super().inHeaders(obj['entity']):
-                    super().searchInApps(obj['entity'], obj['value'])
-                else: 
-                    dispatcher.utter_message(text="No available filters.")
-                    return None
-            
-            dispatcher.utter_message(text=super().dispatchAppInfo())
 
 # si tenim low confidence en algun cas, pero encara podem aplicar filtering, ho fem
 class ActionDefaultFallback(Action):
