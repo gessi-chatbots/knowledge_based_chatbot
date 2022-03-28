@@ -100,6 +100,7 @@ class findFeautre(ActionQueryKnowledgeBase):
             tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         filter = super().getCurrentAppSize() != 0
+        print (tracker.latest_message['entities'])
         for obj in tracker.latest_message['entities']:
             if not (super().inHeaders(obj['entity'])): continue
             if filter:
@@ -126,7 +127,7 @@ class ActionDefaultFallback(Action):
     ) -> List[Dict[Text, Any]]:
         dispatcher.utter_message(template="my_custom_fallback_template")
         found = False
-
+        
         for obj in tracker.latest_message['entities']:
             if obj["entity"] == "mention":
                 err = super().treatMention(obj["value"])

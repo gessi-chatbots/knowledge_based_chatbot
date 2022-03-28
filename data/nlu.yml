@@ -17,6 +17,19 @@ nlu:
     - goodevening
     - good afternoon
 
+- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+
 - intent: find_feature
   examples: |
     - Ask [app]{"entity": "object_type", "value": "apps"} to activate [Public transportation]{"entity": "features", "value": "Public transportation"}

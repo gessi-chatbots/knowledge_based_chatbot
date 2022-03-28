@@ -2,6 +2,7 @@ version: "3.0"
 
 intents:
   - greet
+  - goodbye
   - find_feature
   - specify_feature
 

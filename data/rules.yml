@@ -6,6 +6,11 @@ rules:
   - intent: greet
   - action: utter_greet
 
+- rule: Say goodbye everytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
 - rule: find-features
   steps:
   - intent: find_feature
