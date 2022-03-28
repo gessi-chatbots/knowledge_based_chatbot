@@ -82,10 +82,6 @@ for p in find_feature:
         replacedStr = p.replace('<features>', fts)
         f.write('    - ' + replacedStr + '\n')
 
-f.write('\n- intent: specify_feature\n'+
-        '  examples: | \n'
-)
-
 for p in specify_feature['replace_features']:
     for fts in features:
         replacedStr = p.replace('<features>', fts)
