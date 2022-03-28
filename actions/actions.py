@@ -20,16 +20,23 @@ class ActionQueryKnowledgeBase(Action):
         }
 
         ActionQueryKnowledgeBase.currentApps = []
+        ActionQueryKnowledgeBase.filterFeatures = {}
+        for header in self.data['apps'][0].keys():
+            ActionQueryKnowledgeBase.filterFeatures[header] = set()
     
     #default name for action
     def name(self):
         return 'action_query_data_base'
 
+    # amount of apps after filtering
     def getCurrentAppSize() -> int:
         return len(ActionQueryKnowledgeBase.currentApps)
+
     # search without filter --> override apps in action
     def searchInApps(self, header, value) -> None:
         ActionQueryKnowledgeBase.currentApps = []
+        ActionQueryKnowledgeBase.filterFeatures[header].update(value)
+
         for x in self.data['apps']:
             if value in x[header]:
                 ActionQueryKnowledgeBase.currentApps.append(x)
@@ -37,6 +44,8 @@ class ActionQueryKnowledgeBase(Action):
     # filter apps when already initialized
     def filterCurrentApps(self, header, value) -> None:
         filteredApps = []
+        ActionQueryKnowledgeBase.filterFeatures[header].update(value)
+
         for x in self.currentApps:
             if value in x[header]:
                 filteredApps.append(x)
