@@ -1,0 +1,17 @@
+version: "3.0"
+
+marker_find_feature_correct:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_feature
+  - action: action_find_feature
+
+
+marker_find_feature_wrong:
+- story: happy path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: out_of_scope
