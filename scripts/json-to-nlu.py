@@ -1,5 +1,6 @@
 import json
 import string 
+import itertools
 
 with open('../rasa_knowledge_base.json', 'r') as fr:
     data = json.load(fr)
@@ -39,14 +40,30 @@ f.write("version: '3.0' \n\n" +
     "    - good afternoon\n" 
 )
 
-find_feature = [
-    'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<features>]{"entity": "features", "value": "<features>"}',
-    'I want [app]{"entity": "object_type", "value": "apps"} to enable [<features>]{"entity": "features", "value": "<features>"}',
-    'enable [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
-    'activate [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
-    'turn on [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
-    'authorize [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
-]
+find_feature = {
+    "single_feature": [
+        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<features>]{"entity": "features", "value": "<features>"}',
+        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<features>]{"entity": "features", "value": "<features>"}',
+        'enable [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
+        'activate [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
+        'turn on [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
+        'authorize [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
+    ],
+    "two_features": [
+        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
+        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+    ]
+}
     
 specify_feature = {
     "replace_features": [
@@ -77,10 +94,17 @@ f.write('\n- intent: find_feature\n'+
         '  examples: |\n' 
 )
 
-for p in find_feature:
+for p in find_feature["single_feature"]:
     for fts in features:
         replacedStr = p.replace('<features>', fts)
         f.write('    - ' + replacedStr + '\n')
+
+for p in find_feature["two_features"]:
+    for (ft1, ft2) in list(itertools.product(features, features)):
+        if ft1 != ft2:
+            replacedStr = p.replace('<feature1>', ft1)
+            replacedStr = replacedStr.replace('<feature2>', ft2)
+            f.write('    - ' + replacedStr + '\n')
 
 for p in specify_feature['replace_features']:
     for fts in features:
