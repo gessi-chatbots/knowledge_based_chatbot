@@ -40,6 +40,19 @@ f.write("version: '3.0' \n\n" +
     "    - good afternoon\n" 
 )
 
+'''- intent: goodbye
+  examples: |
+    - cu
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later'''
+
 find_feature = {
     "single_feature": [
         'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<features>]{"entity": "features", "value": "<features>"}',
