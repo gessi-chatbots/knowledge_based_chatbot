@@ -112,7 +112,9 @@ for p in find_feature["single_feature"]:
         replacedStr = p.replace('<features>', fts)
         f.write('    - ' + replacedStr + '\n')
 
-for p in find_feature["two_features"]:
+count = 0
+while p in find_feature["two_features"] and count < 15:
+    count += 1
     for (ft1, ft2) in list(itertools.product(features, features)):
         if ft1 != ft2:
             replacedStr = p.replace('<feature1>', ft1)
