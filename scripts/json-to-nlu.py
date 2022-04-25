@@ -1,6 +1,7 @@
 import json
 import string 
 import itertools
+from nltk.corpus import wordnet
 
 with open('../rasa_knowledge_base.json', 'r') as fr:
     data = json.load(fr)
@@ -8,16 +9,19 @@ with open('../rasa_knowledge_base.json', 'r') as fr:
 data = data['apps']
 names = []
 featuresArray = []
+#featuresArray_notPunctRemoved = []
 for x in data:
     names += [x['name']]
     for fts in x['features']:
-        fts = fts.translate(str.maketrans('', '', string.punctuation))
+        #featuresArray_notPunctRemoved.append(fts.replace('.', '').replace('.', ''))
+        fts = fts.replace('-', ' ').translate(str.maketrans('', '', string.punctuation))
         featuresArray.append(fts)
 
 print(names)
 
 features = set(featuresArray)
 print(features)
+#features_notPunctRemoved = set(featuresArray_notPunctRemoved)
 
 f = open('nlu.yml', 'w')
 
@@ -103,23 +107,14 @@ specify_feature = {
     ]
 }
 
-f.write('\n- intent: find_feature\n'+
-        '  examples: |\n' 
-)
+for fts in features:
+    print()
+    #syns = wordnet.synsets(fts.replace(' ', '_'))
 
 for p in find_feature["single_feature"]:
     for fts in features:
         replacedStr = p.replace('<features>', fts)
         f.write('    - ' + replacedStr + '\n')
-
-count = 0
-while p in find_feature["two_features"] and count < 15:
-    count += 1
-    for (ft1, ft2) in list(itertools.product(features, features)):
-        if ft1 != ft2:
-            replacedStr = p.replace('<feature1>', ft1)
-            replacedStr = replacedStr.replace('<feature2>', ft2)
-            f.write('    - ' + replacedStr + '\n')
 
 for p in specify_feature['replace_features']:
     for fts in features:
@@ -133,6 +128,19 @@ for p in specify_feature['replace_name']:
 
 for p in specify_feature['no_replace']:
     f.write('    - ' + p + '\n')
+
+f.write('\n- intent: find_feature\n'+
+        '  examples: |\n' 
+)
+
+count = 0
+while p in find_feature["two_features"] and count < 15:
+    count += 1
+    for (ft1, ft2) in list(itertools.product(features, features)):
+        if ft1 != ft2:
+            replacedStr = p.replace('<feature1>', ft1)
+            replacedStr = replacedStr.replace('<feature2>', ft2)
+            f.write('    - ' + replacedStr + '\n')
 
 f.write('\n- intent: out_of_scope\n' +
         '  examples: |\n' +

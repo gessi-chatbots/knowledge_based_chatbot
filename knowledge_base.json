@@ -1,6 +1,7 @@
 {
     "apps": [
         {
+            "id": 0,
             "name": "OsmAnd",
             "features": [
                 "Works Offline",
@@ -22,9 +23,7 @@
                 "Text to Speech",
                 "Real-time traffic",
                 "Driving directions",
-                "Record Tracks"
-            ],
-            "tags": [
+                "Record Tracks",
                 "offline-navigation",
                 "Map",
                 "biking-maps",
@@ -36,6 +35,7 @@
             ]
         },
         {
+            "id": 1,
             "name": "Etar",
             "features": [
                 "Calendar",
@@ -43,29 +43,27 @@
                 "Lightweight",
                 "Privacy focused",
                 "Ad-free",
-                "GPS Location Tracking"
-            ],
-            "tags": [
+                "GPS Location Tracking",
                 "event-calendar",
                 "open-source-projects",
                 "calendar-events"
             ]
         },
         {
+            "id": 2,
             "name": "Simple Calendar",
             "features": [
                 "Calendar",
                 "Notifications",
                 "Support for WebDAV",
                 "Customizable",
-                "Built-in Calendar"
-            ],
-            "tags": [
+                "Built-in Calendar",
                 "Events",
                 "reminder"
             ]
         },
         {
+            "id": 3,
             "name": "Organic Maps",
             "features": [
                 "Based on OpenStreetMap",
@@ -87,9 +85,7 @@
                 "Hiking Maps",
                 "Driving directions",
                 "Route optimization",
-                "Route Planning"
-            ],
-            "tags": [
+                "Route Planning",
                 "biking-maps",
                 "hiking",
                 "Map",
