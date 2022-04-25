@@ -6,24 +6,18 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
 
-import json 
+from actions.KnowledgeBase import KnowledgeBase
 
 #reimplementation of ActionQueryKnowledgeBase
 class ActionQueryKnowledgeBase(Action):
     #initiates data from knowledge base json file
     def __init__(self): 
-        with open('rasa_knowledge_base.json', 'r') as f:
-            self.data = json.load(f)
-
         self.ordinal_mention_mapping = {
             "ANY": lambda l: random.choice(l),
             "LAST": lambda l: l[-1],
         }
 
         ActionQueryKnowledgeBase.currentApps = []
-        ActionQueryKnowledgeBase.filterFeatures = {}
-        for header in self.data['apps'][0].keys():
-            ActionQueryKnowledgeBase.filterFeatures[header] = set()
     
     #default name for action
     def name(self):
@@ -36,7 +30,7 @@ class ActionQueryKnowledgeBase(Action):
     # search without filter --> override apps in action
     def searchInApps(self, header, value) -> None:
         ActionQueryKnowledgeBase.currentApps = []
-        ActionQueryKnowledgeBase.filterFeatures[header].update(value)
+        KnowledgeBase.updateFilterFeatures(header, value)
 
         for x in self.data['apps']:
             if value in x[header]:
@@ -45,7 +39,7 @@ class ActionQueryKnowledgeBase(Action):
     # filter apps when already initialized
     def filterCurrentApps(self, header, value) -> None:
         filteredApps = []
-        ActionQueryKnowledgeBase.filterFeatures[header].update(value)
+        KnowledgeBase.updateFilterFeatures(header, value)
 
         for x in self.currentApps:
             if value in x[header]:

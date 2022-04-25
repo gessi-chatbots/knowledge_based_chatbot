@@ -8,6 +8,7 @@ from rasa_sdk.events import UserUtteranceReverted
 
 import json 
 from actions.ActionQueryKnowledgeBase import ActionQueryKnowledgeBase
+
 class findFeautre(ActionQueryKnowledgeBase):
     def name(self):
         return 'action_find_feature'
