@@ -31,7 +31,7 @@ class findFeautre(ActionQueryKnowledgeBase):
                 filter = True
                 super().searchInApps(obj['entity'], obj['value'])
 
-            dispatcher.utter_message(text=super().dispatchAppInfo())
+        dispatcher.utter_message(text=super().dispatchAppInfo())
 
 # si tenim low confidence en algun cas, pero encara podem aplicar filtering, ho fem
 class ActionDefaultFallback(Action):

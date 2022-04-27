@@ -82,18 +82,18 @@ find_feature = {
         'authorize [apps](object_type) [<features>]{"entity": "features", "value": "<features>"}',
     ],
     "two_features": [
-        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} and [<feature2>]{"entity": "features", "value": "<features>"}',
-        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
-        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
-        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
-        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
-        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
-        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<features>"} with [<feature2>]{"entity": "features", "value": "<features>"}',
+        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} and [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'Ask [app]{"entity": "object_type", "value": "apps"} to activate [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'I want [app]{"entity": "object_type", "value": "apps"} to enable [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'enable [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'activate [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'turn on [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
+        'authorize [apps](object_type) [<feature1>]{"entity": "features", "value": "<feature1>"} with [<feature2>]{"entity": "features", "value": "<feature2>"}',
     ]
 }
     
@@ -144,6 +144,17 @@ for p in specify_feature['replace_name']:
 for p in specify_feature['no_replace']:
     f.write('    - ' + p + '\n')
 
+count = 0
+for p in find_feature["two_features"]:
+    for (ft1, ft2) in list(itertools.product(features, features)):
+        if count >= 15: break
+        if ft1 != ft2:
+            replacedStr = p.replace('<feature1>', ft1)
+            replacedStr = replacedStr.replace('<feature2>', ft2)
+            f.write('    - ' + replacedStr + '\n')
+        count += 1
+    if count >= 15: break
+
 all = set()
 for fts in features:
     count = len(fts.split()) - 1
@@ -162,15 +173,6 @@ for fts in features:
         f.write('    - ' + ng + '\n')
 
 print(all)
-
-count = 0
-while p in find_feature["two_features"] and count < 15:
-    count += 1
-    for (ft1, ft2) in list(itertools.product(features, features)):
-        if ft1 != ft2:
-            replacedStr = p.replace('<feature1>', ft1)
-            replacedStr = replacedStr.replace('<feature2>', ft2)
-            f.write('    - ' + replacedStr + '\n')
 
 f.write('\n- intent: out_of_scope\n' +
         '  examples: |\n' +
