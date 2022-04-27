@@ -28,9 +28,10 @@ featuresArray = []
 for x in data:
     names += [x['name']]
     for fts in x['features']:
-        fts = fts.replace('-', ' ').replace('/', ' ')
-        fts = fts.translate(str.maketrans('', '', string.punctuation))
-        featuresArray.append(fts.strip().lower())
+        #fts = fts.replace('-', ' ').replace('/', ' ')
+        punct = string.punctuation.replace('-', '').replace('/', '')
+        fts = fts.translate(str.maketrans('', '', punct))
+        featuresArray.append(fts)
 
 print(names)
 

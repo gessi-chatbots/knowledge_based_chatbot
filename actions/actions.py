@@ -19,6 +19,11 @@ class findFeautre(ActionQueryKnowledgeBase):
         filter = super().getCurrentAppSize() != 0
         print (tracker.latest_message['entities'])
         for obj in tracker.latest_message['entities']:
+            if obj['entity'] == "mention": 
+                ret = super().treatMention(obj['value'])
+                if ret != "": dispatcher.utter_message(ret)
+                break
+
             if not (super().inHeaders(obj['entity'])): continue
             if filter:
                 super().filterCurrentApps(obj['entity'], obj['value'])
@@ -26,7 +31,7 @@ class findFeautre(ActionQueryKnowledgeBase):
                 filter = True
                 super().searchInApps(obj['entity'], obj['value'])
 
-        dispatcher.utter_message(text=super().dispatchAppInfo())
+            dispatcher.utter_message(text=super().dispatchAppInfo())
 
 # si tenim low confidence en algun cas, pero encara podem aplicar filtering, ho fem
 class ActionDefaultFallback(Action):

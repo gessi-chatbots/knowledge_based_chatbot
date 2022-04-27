@@ -73,9 +73,7 @@ class ActionQueryKnowledgeBase(Action):
     def treatMention(self, value) -> Text:
         if value.isnumeric():
             x = int(value)-1
-            print(len(ActionQueryKnowledgeBase.currentApps))
             if x < 0 or x >= len(ActionQueryKnowledgeBase.currentApps):
-                print("here")
                 aux = []
                 return "Incorrect value for given choices."
             aux = [ActionQueryKnowledgeBase.currentApps[x]]
