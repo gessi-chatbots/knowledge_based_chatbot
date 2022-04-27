@@ -1,7 +1,23 @@
 import json
 import string 
 import itertools
-from nltk.corpus import wordnet
+from nltk.corpus import stopwords
+import nltk
+
+# Function to generate n-grams from sentences.
+def extract_ngrams(data, num, already_used):
+    n_grams = nltk.ngrams(data, num)
+    gen_grams =  [' '.join(grams) for grams in n_grams]
+    gen_grams = [word.strip() for word in gen_grams]
+    for ng in gen_grams:
+        if len(ng.strip().split()) == 1 and ng.strip() in stopwords.words():
+            gen_grams.remove(ng)
+        elif ng.strip() in already_used:
+            gen_grams.remove(ng.strip())
+        elif ng in already_used:
+            gen_grams.remove(ng)
+    
+    return gen_grams
 
 with open('../rasa_knowledge_base.json', 'r') as fr:
     data = json.load(fr)
@@ -9,19 +25,17 @@ with open('../rasa_knowledge_base.json', 'r') as fr:
 data = data['apps']
 names = []
 featuresArray = []
-#featuresArray_notPunctRemoved = []
 for x in data:
     names += [x['name']]
     for fts in x['features']:
-        #featuresArray_notPunctRemoved.append(fts.replace('.', '').replace('.', ''))
-        fts = fts.replace('-', ' ').translate(str.maketrans('', '', string.punctuation))
-        featuresArray.append(fts)
+        fts = fts.replace('-', ' ').replace('/', ' ')
+        fts = fts.translate(str.maketrans('', '', string.punctuation))
+        featuresArray.append(fts.strip().lower())
 
 print(names)
 
 features = set(featuresArray)
 print(features)
-#features_notPunctRemoved = set(featuresArray_notPunctRemoved)
 
 f = open('nlu.yml', 'w')
 
@@ -107,9 +121,9 @@ specify_feature = {
     ]
 }
 
-for fts in features:
-    print()
-    #syns = wordnet.synsets(fts.replace(' ', '_'))
+f.write('\n- intent: find_feature\n'+
+        '  examples: |\n' 
+)
 
 for p in find_feature["single_feature"]:
     for fts in features:
@@ -129,9 +143,24 @@ for p in specify_feature['replace_name']:
 for p in specify_feature['no_replace']:
     f.write('    - ' + p + '\n')
 
-f.write('\n- intent: find_feature\n'+
-        '  examples: |\n' 
-)
+all = set()
+for fts in features:
+    count = len(fts.split()) - 1
+    ngrams_fts = []
+    while count >= 1:
+        count -= 1
+        ngrams_fts += extract_ngrams(fts.split(), count, all)
+
+    all.update(ngrams_fts)
+    if ngrams_fts == []: continue
+
+    f.write('\n- synonym: ' + fts + '\n' +
+            '  examples: |\n' )
+
+    for ng in ngrams_fts:
+        f.write('    - ' + ng + '\n')
+
+print(all)
 
 count = 0
 while p in find_feature["two_features"] and count < 15:
