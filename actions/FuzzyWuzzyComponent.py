@@ -1,3 +1,4 @@
+'''
 from typing import Dict, Text, Any, List, Optional
 
 from rasa.engine.graph import GraphComponent, ExecutionContext
@@ -71,7 +72,6 @@ class FuzzyWuzzyComponent(EntityExtractor, GraphComponent):
         return training_data
 
     def process(self, messages: List[Message]) -> List[Message]:
-        # TODO: This is the method which Rasa Open Source will call during inference.
         return messages
     
     def process(self, message: Message, **kwargs: Any) -> None:
@@ -93,3 +93,4 @@ class FuzzyWuzzyComponent(EntityExtractor, GraphComponent):
 
         # n-grams
         # look for library
+'''

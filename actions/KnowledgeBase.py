@@ -13,20 +13,23 @@ class KnowledgeBase():
         with open('rasa_knowledge_base.json', 'r') as f:
             self.data = json.load(f)
 
-        KnowledgeBase.features = {}
-        KnowledgeBase.filterFeatures = {}
+        self.features = {}
+        self.filterFeatures = {}
         for header in self.data['apps'][0].keys():
-            KnowledgeBase.features[header] = set()
-            KnowledgeBase.filterFeatures[header] = set()
+            self.features[header] = set()
+            self.filterFeatures[header] = set()
     
     def getFilterFeatures(self) -> Dict:
-        return KnowledgeBase.filterFeatures
+        return self.filterFeatures
     
     def setFilterFeatures(self, ff) -> None:
-        KnowledgeBase.filterFeatures = ff
+        self.filterFeatures = ff
     
     def updateFilterFeatures(self, header, value) -> None:
-        KnowledgeBase.filterFeatures[header].update(value)
+        self.filterFeatures[header].update(value)
 
     def getFeatures(self) -> Dict:
         return self.features
+    
+    def getData(self) -> Dict:
+        return self.data['apps']

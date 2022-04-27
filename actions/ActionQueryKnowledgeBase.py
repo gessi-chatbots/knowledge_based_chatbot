@@ -18,6 +18,7 @@ class ActionQueryKnowledgeBase(Action):
         }
 
         ActionQueryKnowledgeBase.currentApps = []
+        ActionQueryKnowledgeBase.kb = KnowledgeBase()
     
     #default name for action
     def name(self):
@@ -30,16 +31,17 @@ class ActionQueryKnowledgeBase(Action):
     # search without filter --> override apps in action
     def searchInApps(self, header, value) -> None:
         ActionQueryKnowledgeBase.currentApps = []
-        KnowledgeBase.updateFilterFeatures(header, value)
+        ActionQueryKnowledgeBase.kb.updateFilterFeatures(header, value)
 
-        for x in self.data['apps']:
+        data = ActionQueryKnowledgeBase.kb.getData()
+        for x in data:
             if value in x[header]:
                 ActionQueryKnowledgeBase.currentApps.append(x)
     
     # filter apps when already initialized
     def filterCurrentApps(self, header, value) -> None:
         filteredApps = []
-        KnowledgeBase.updateFilterFeatures(header, value)
+        ActionQueryKnowledgeBase.kb.updateFilterFeatures(header, value)
 
         for x in self.currentApps:
             if value in x[header]:
@@ -65,7 +67,7 @@ class ActionQueryKnowledgeBase(Action):
     
     # check if an item is in the headers i.e. can be filtered by
     def inHeaders(self, header) -> boolean:
-        return header in self.data['apps'][0].keys()
+        return header in ActionQueryKnowledgeBase.kb.getData()[0].keys()
     
     # if the mention isn't valid, invalidate search otherwise return correct app
     def treatMention(self, value) -> Text:
