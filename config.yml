@@ -21,6 +21,7 @@ pipeline:
 - name: DIETClassifier
   epochs: 100
   constrain_similarities: true
+- name: actions.FuzzyWuzzyComponent.FuzzyWuzzyComponent
 - name: EntitySynonymMapper
 - name: ResponseSelector
   epochs: 100
