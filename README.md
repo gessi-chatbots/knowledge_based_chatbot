@@ -2,7 +2,21 @@
 Knowledge based chatbot to find apps with desired features. Currently working on a small subset of applications. To adapt this chatbot simply follow the structure in the corresponding knowledge base file and re-train the model. 
 
 ## Description
-Uses JSON files to provide knowledge base to the chatbot. 
+Uses JSON files to provide knowledge base to the chatbot. Using the Rasa interface this chatbot allows smart user-machine interaction. This chatbot allows user to select a distinct application based on their preferred features.
+
+## Sample Story
+````
+Your input ->  hello                                                                   
+Hello! I am a mobile app assistant. Which features do you need help with?
+Your input ->  I want to activate GPS Navigation                                       
+Sure! I see you have multiple apps with this feature:
+1. OsmAnd 
+2. Organic Maps 
+Do you wish to use any app in particular?
+Your input ->  Whichever has Real-time traffic                                         
+Great! Then let's launch OsmAnd!
+
+````
 
 ## File structure
 
