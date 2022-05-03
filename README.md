@@ -31,7 +31,6 @@ Extended summary: purpose, main components, technologies
   - endpoint.yml:
   - markers.yml:
   - rasa_knowledge_base.json
-  - LICENCE
 
 ## Used technologies
 
