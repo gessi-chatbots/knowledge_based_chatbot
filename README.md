@@ -38,7 +38,8 @@ Libraries, frameworks, engines, tools, third-party services...
 
 | Component | Description | Version |
 |--------------------------|------|---------|
-|...|...|...|
+|rasa|Open source framework for NLU, dialogue, and integrations.|>=3.0.0|
+|fuzzywuzzy|uses Levenshtein Distance to calculate the differences between sequences in a simple-to-use package|0.2.0|
 
 ## How to install
 
@@ -54,12 +55,8 @@ Libraries, frameworks, engines, tools, third-party services...
 
 ## Notes for developers
 
-Use this to build awesome things
-``
-$ rasa init
-``
-
-Check this: https://rasahq.github.io/rasa-nlu-examples/
+Check this for more information on rasa:
+- https://github.com/RasaHQ/rasa/blob/main/docs/docs/command-line-interface.mdx
 
 ## License
 
