@@ -144,6 +144,7 @@ for p in specify_feature['replace_name']:
 for p in specify_feature['no_replace']:
     f.write('    - ' + p + '\n')
 
+'''
 count = 0
 for p in find_feature["two_features"]:
     for (ft1, ft2) in list(itertools.product(features, features)):
@@ -154,6 +155,7 @@ for p in find_feature["two_features"]:
             f.write('    - ' + replacedStr + '\n')
         count += 1
     if count >= 15: break
+'''
 
 all = set()
 for fts in features:
