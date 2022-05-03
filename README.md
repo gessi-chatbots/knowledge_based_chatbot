@@ -9,10 +9,10 @@ Extended summary: purpose, main components, technologies
 ## File structure
 
 - \actions
--- ActionQueryKnowledgeBase.py:
--- actions.py:
--- customComponents.py:
--- KnowledgeBase.py:
+  - ActionQueryKnowledgeBase.py:
+  - actions.py:
+  - customComponents.py:
+  - KnowledgeBase.py:
 - \data
 -- nlu.yml
 -- rules.yml
