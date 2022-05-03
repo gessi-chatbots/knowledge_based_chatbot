@@ -14,23 +14,24 @@ Extended summary: purpose, main components, technologies
   - customComponents.py:
   - KnowledgeBase.py:
 - \data
--- nlu.yml
--- rules.yml
--- stories.yml
+  - nlu.yml
+  - rules.yml
+  - stories.yml
 - \models: contains all currently trained models
 - \scripts
--- json-to-nlu.py
--- nltk_data.py
--- proactive-bot.py
+  - json-to-nlu.py
+  - nltk_data.py
+  - proactive-bot.py
 - \tests
--- test_stories.yml:
-- config.yml:
-- credentials.yml:
-- domain.yml:
-- endpoint.yml:
-- markers.yml:
-- rasa_knowledge_base.json
-- LICENCE
+  - test_stories.yml:
+- \
+  - config.yml: 
+  - credentials.yml:
+  - domain.yml:
+  - endpoint.yml:
+  - markers.yml:
+  - rasa_knowledge_base.json
+  - LICENCE
 
 ## Used technologies
 
