@@ -1,10 +1,4 @@
-import random
-from typing import Any, Text, Dict, List, Set
-from xmlrpc.client import boolean
-
-from rasa_sdk import Action, Tracker
-from rasa_sdk.executor import CollectingDispatcher
-from rasa_sdk.events import UserUtteranceReverted
+from typing import Dict, Set
 
 import json 
 
