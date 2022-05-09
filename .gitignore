@@ -3,3 +3,4 @@ Node-Backend/
 .rasa/
 .cache/
 .local/
+.rasa/cache
