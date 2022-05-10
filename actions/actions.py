@@ -6,8 +6,7 @@ from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import UserUtteranceReverted
 
-import json 
-from actions.ActionQueryKnowledgeBase import ActionQueryKnowledgeBase
+from ActionQueryKnowledgeBase import ActionQueryKnowledgeBase
 
 class findFeautre(ActionQueryKnowledgeBase):
     def name(self):

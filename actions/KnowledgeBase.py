@@ -1,11 +1,11 @@
 from typing import Dict, Set
 
 import json 
-
 class KnowledgeBase():
     def __init__(self):
-        with open('rasa_knowledge_base.json', 'r') as f:
+        with open('../rasa_knowledge_base.json', 'r') as f:
             self.data = json.load(f)
+
         self.features = set()
         self.filterFeatures = {}
         
@@ -29,3 +29,4 @@ class KnowledgeBase():
     
     def getData(self) -> Dict:
         return self.data['apps']
+

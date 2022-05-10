@@ -8,3 +8,19 @@ stories:
   - action: utter_greet
   - intent: find_feature
   - action: action_find_feature
+
+- story: sad path
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: out_of_scope
+  - action: utter_out_of_scope
+
+- story: happy path 2
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: find_feature
+  - action: action_find_feature
+  - intent: find_feature
+  - action: action_find_feature
