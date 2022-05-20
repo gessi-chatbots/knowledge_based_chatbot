@@ -29,3 +29,12 @@ class EventHandler:
 
     def hasNextSlot(self):
         return self.nextKey < len(self.slots) - 1
+
+    def atEnd(self):
+        return self.nextKey == len(self.slots) - 1
+
+    def dispatchEventInfo(self):
+        t = ""
+        for key in self.dict:
+            t += key + ": " + self.dict[key] + "\n"
+        return t

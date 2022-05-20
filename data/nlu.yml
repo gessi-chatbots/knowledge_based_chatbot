@@ -717,6 +717,13 @@ nlu:
     
 - intent: inform
   examples: |
+    - [August 25th](information)
+    - [September 9th](information)
+    - [September 10th](information)
+    - [09/10/2019](information)
+    - [10:00 AM](information)
+    - [12:00 PM](information)
+    - [15:00](information)
     - [August 25th](information) at [10:00 AM](information)
     - [September 15th](information) at [5:00 PM](information)
     - [05/08/2022](information) at [2:00 AM](information)

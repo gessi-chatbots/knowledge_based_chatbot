@@ -81,8 +81,6 @@ class RequestInformationEvent(Action):
     def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
-        print("here")
-        print(tracker.latest_message)
         if RequestInformationEvent.eh.get_current_key_value() > -1:
             for obj in tracker.latest_message["entities"]:
                 if obj["entity"] == "information":
@@ -94,4 +92,10 @@ class RequestInformationEvent(Action):
                 + RequestInformationEvent.eh.get_next_slot()
             )
             dispatcher.utter_message(text=msg)
-        ## test feature finding with internal mapping
+        elif RequestInformationEvent.eh.atEnd():
+            dispatcher.utter_message(
+                text="Thank you for your information!\n"
+                + "Please confirm the following is correct:\n"
+                + RequestInformationEvent.eh.dispatchEventInfo()
+            )
+            RequestInformationEvent.eh.reset()
