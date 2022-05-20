@@ -36,5 +36,10 @@ class EventHandler:
     def dispatchEventInfo(self):
         t = ""
         for key in self.dict:
-            t += key + ": " + self.dict[key] + "\n"
+            t += "  -" + key + ": " + self.dict[key] + "\n"
         return t
+
+    def reset(self):
+        self.dict = {}
+        self.slots = []
+        self.nextKey = -1
