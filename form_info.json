@@ -1,0 +1,8 @@
+{
+    "calendar": [
+        "date",
+        "time",
+        "e-mail",
+        "description"
+    ]
+}

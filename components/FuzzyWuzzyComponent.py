@@ -1,23 +1,20 @@
 import typing
-from typing import Dict, Text, Any, List, Optional
+from typing import Any, Dict, List, Optional, Text
 
-from rasa.engine.graph import GraphComponent, ExecutionContext
+from fuzzywuzzy import process
+from KnowledgeBase import KnowledgeBase
+from rasa.engine.graph import ExecutionContext, GraphComponent
 from rasa.engine.recipes.default_recipe import DefaultV1Recipe
 from rasa.engine.storage.resource import Resource
 from rasa.engine.storage.storage import ModelStorage
-from rasa.shared.nlu.training_data.message import Message
-from rasa.shared.nlu.training_data.training_data import TrainingData
 from rasa.nlu.extractors.extractor import EntityExtractorMixin
 from rasa.shared.nlu.constants import ENTITIES
+from rasa.shared.nlu.training_data.message import Message
+from rasa.shared.nlu.training_data.training_data import TrainingData
 
-from fuzzywuzzy import process
-
-from actions.KnowledgeBase import KnowledgeBase
 
 # TODO: Correctly register your component with its type
-@DefaultV1Recipe.register(
-    [DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR], is_trainable=True
-)
+@DefaultV1Recipe.register([DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR], is_trainable=True)
 class FuzzyWuzzyComponent(GraphComponent, EntityExtractorMixin):
     def __init__(self, component_config: Optional[Dict[Text, Any]] = None) -> None:
         self._config = component_config
@@ -56,17 +53,17 @@ class FuzzyWuzzyComponent(GraphComponent, EntityExtractorMixin):
         fts = list(self.kb.getFeatures())
 
         for entity in entities:
-            if entity['entity'] != 'features': continue
-            value = str(entity["value"])
-            match = process.extract(query=value, choices=fts, limit=1)
-            if match:
-                entity["value"] = match[0][0]
+            if entity["entity"] == "features":
+                value = str(entity["value"])
+                match = process.extract(query=value, choices=fts, limit=1)
+                if match:
+                    entity["value"] = match[0][0]
 
             entities_fixed.append(entity)
-        
+
         print(entities_fixed)
         return entities_fixed
-    
+
     def train(self, training_data: TrainingData) -> Resource:
         # TODO: Implement this if your component requires training
-        pass 
+        pass

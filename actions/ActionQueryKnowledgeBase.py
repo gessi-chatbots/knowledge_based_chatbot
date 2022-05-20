@@ -4,12 +4,13 @@ from xmlrpc.client import boolean
 
 from rasa_sdk import Action
 
-from actions.KnowledgeBase import KnowledgeBase
+from KnowledgeBase import KnowledgeBase
 
-#reimplementation of ActionQueryKnowledgeBase
+
+# reimplementation of ActionQueryKnowledgeBase
 class ActionQueryKnowledgeBase(Action):
-    #initiates data from knowledge base json file
-    def __init__(self): 
+    # initiates data from knowledge base json file
+    def __init__(self):
         self.ordinal_mention_mapping = {
             "ANY": lambda l: random.choice(l),
             "LAST": lambda l: l[-1],
@@ -17,10 +18,10 @@ class ActionQueryKnowledgeBase(Action):
 
         ActionQueryKnowledgeBase.currentApps = []
         ActionQueryKnowledgeBase.kb = KnowledgeBase()
-    
-    #default name for action
+
+    # default name for action
     def name(self):
-        return 'action_query_data_base'
+        return "action_query_data_base"
 
     # amount of apps after filtering
     def getCurrentAppSize(self) -> int:
@@ -35,7 +36,7 @@ class ActionQueryKnowledgeBase(Action):
         for x in data:
             if value in x[header]:
                 ActionQueryKnowledgeBase.currentApps.append(x)
-    
+
     # filter apps when already initialized
     def filterCurrentApps(self, header, value) -> None:
         filteredApps = []
@@ -50,27 +51,31 @@ class ActionQueryKnowledgeBase(Action):
     def dispatchAppInfo(self) -> Text:
         size = len(ActionQueryKnowledgeBase.currentApps)
         text = ""
-        if (size == 0): 
+        if size == 0:
             text = "Sorry, I couldn't find any apps with those features!"
-        elif (size == 1): 
-            text = "Great! Then let's launch " + ActionQueryKnowledgeBase.currentApps[0]['name'] + "!\n"
-        else: 
+        elif size == 1:
+            text = (
+                "Great! Then let's launch "
+                + ActionQueryKnowledgeBase.currentApps[0]["name"]
+                + "!\n"
+            )
+        else:
             text = "Sure! I see you have multiple apps with this feature:\n"
             i = 1
             for x in ActionQueryKnowledgeBase.currentApps:
-                text += str(i) + ". " + x['name'] + " \n"
+                text += str(i) + ". " + x["name"] + " \n"
                 i += 1
             text += "Do you wish to use any app in particular?\n"
         return text
-    
+
     # check if an item is in the headers i.e. can be filtered by
     def inHeaders(self, header) -> boolean:
         return header in ActionQueryKnowledgeBase.kb.getData()[0].keys()
-    
+
     # if the mention isn't valid, invalidate search otherwise return correct app
     def treatMention(self, value) -> Text:
         if value.isnumeric():
-            x = int(value)-1
+            x = int(value) - 1
             if x < 0 or x >= len(ActionQueryKnowledgeBase.currentApps):
                 aux = []
                 return "Incorrect value for given choices."

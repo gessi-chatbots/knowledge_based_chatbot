@@ -707,3 +707,27 @@ nlu:
     - I want to order good
     - What is 2+2?
     - Who's the US President?)
+
+- intent: create_calendar_event
+  examples: |
+    - I want to create a calendar event for my route
+    - calendar event for route
+    - can you create a calendar event for my route?
+    - please create a calendar evenet for this route
+    
+- intent: inform
+  examples: |
+    - [August 25th](information) at [10:00 AM](information)
+    - [September 15th](information) at [5:00 PM](information)
+    - [05/08/2022](information) at [2:00 AM](information)
+    - Send a request to [carla.campas@upc.edu](information) and [agusti.gallego@upc.edu](information)
+    - Send a request to [agusti.gallego@upc.edu](information) [carla.campas@upc.edu](information)
+    - Send a request to [joaquim.motger@upc.edu](information) and [agusti.gallego@upc.edu](information)
+    - Send a request to [carla.campas@upc.edu](information) and [joaquim.motger@upc.edu](information)
+    - Send a request to [carla.campas@upc.edu](information)
+    - Send a request to [joaquim.motger@upc.edu](information)
+    - Send a request to [agusti.gallego@upc.edu](information)
+    - Yes, [if sunny we go bowling](information)
+    - No
+    - [if sunny we go bowling otherwise we watch a movie](information)
+    - Yes, [if sunny we go to the beach](information)

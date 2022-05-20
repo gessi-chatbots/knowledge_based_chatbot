@@ -26,5 +26,10 @@ rules:
   - intent: nlu_fallback
   - action: utter_ask_rephrase
 
+- rule: launch request information to deal with information given by the user
+  steps:
+  - intent: inform
+  - action: action_request_information
+
 
 
