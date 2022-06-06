@@ -717,24 +717,34 @@ nlu:
     
 - intent: inform
   examples: |
-    - [August 25th](information)
-    - [September 9th](information)
-    - [September 10th](information)
-    - [09/10/2019](information)
-    - [10:00 AM](information)
-    - [12:00 PM](information)
-    - [15:00](information)
-    - [August 25th](information) at [10:00 AM](information)
-    - [September 15th](information) at [5:00 PM](information)
-    - [05/08/2022](information) at [2:00 AM](information)
-    - Send a request to [carla.campas@upc.edu](information) and [agusti.gallego@upc.edu](information)
-    - Send a request to [agusti.gallego@upc.edu](information) [carla.campas@upc.edu](information)
-    - Send a request to [joaquim.motger@upc.edu](information) and [agusti.gallego@upc.edu](information)
-    - Send a request to [carla.campas@upc.edu](information) and [joaquim.motger@upc.edu](information)
-    - Send a request to [carla.campas@upc.edu](information)
-    - Send a request to [joaquim.motger@upc.edu](information)
-    - Send a request to [agusti.gallego@upc.edu](information)
-    - Yes, [if sunny we go bowling](information)
+    - [August 25th](information_calendar)
+    - [September 9th](information_calendar)
+    - [September 10th](information_calendar)
+    - [09/10/2019](information_calendar)
+    - [10:00 AM](information_calendar)
+    - [12:00 PM](information_calendar)
+    - [15:00](information_calendar)
+    - [August 25th](information_calendar) at [10:00 AM](information_calendar)
+    - [September 15th](information_calendar) at [5:00 PM](information_calendar)
+    - [05/08/2022](information_calendar) at [2:00 AM](information_calendar)
+    - Send a request to [carla.campas@upc.edu](information_email) and [agusti.gallego@upc.edu](information_email)
+    - Send a request to [agusti.gallego@upc.edu](information_email) [carla.campas@upc.edu](information_email)
+    - Send a request to [joaquim.motger@upc.edu](information_email) and [agusti.gallego@upc.edu](information_email)
+    - Send a request to [carla.campas@upc.edu](information_email) and [joaquim.motger@upc.edu](information_email)
+    - Send a request to [carla.campas@upc.edu](information_email)
+    - Send a request to [joaquim.motger@upc.edu](information_email)
+    - Send a request to [agusti.gallego@upc.edu](information_email)
+    - Yes, [if sunny we go bowling](information_text)
     - No
-    - [if sunny we go bowling otherwise we watch a movie](information)
-    - Yes, [if sunny we go to the beach](information)
+    - [if sunny we go bowling otherwise we watch a movie](information_text)
+    - Yes, [if sunny we go to the beach](information_text)
+
+- intent: validate
+  examples: |
+    - Yes!
+    - That works.
+    - Perfect.
+    - Yup
+    - Ok
+    - Thanks
+    - Yes, thank you

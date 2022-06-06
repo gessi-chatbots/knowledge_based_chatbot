@@ -7,6 +7,7 @@ intents:
   - specify_feature
   - create_calendar_event
   - inform
+  - validate
 
 responses:
   utter_greet:
@@ -34,7 +35,9 @@ entities:
 - attribute
 - mention
 - name
-- information
+- information_calendar
+- information_email
+- information_text
 
 slots:
   object_type:
@@ -67,16 +70,29 @@ slots:
     mappings:
     - type: from_entity
       entity: mention
-  information:
+  information_calendar:
     type: text
     influence_conversation: false
     mappings:
     - type: from_entity
-      entity: information
+      entity: information_calendar
+  information_email:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: information_email
+  information_text:
+    type: text
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: information_text
 
 actions:
 - action_find_feature
 - action_request_information
+- action_validate_event
 
 session_config:
   session_expiration_time: 60

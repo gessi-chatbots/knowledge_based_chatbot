@@ -1,0 +1,35 @@
+{
+    "source": "GPS-track-create",
+    "target": "CA-events-create",
+    "source_data": {
+        "lat": "42.238904",
+        "long": "1.6976341"
+    },
+    "target_data": [
+        {
+            "name": "start date/time",
+            "type": "Calendar",
+            "value": null
+        },
+        {
+            "name": "end date/time",
+            "type": "Calendar",
+            "value": null
+        },
+        {
+            "name": "invites",
+            "type": "SetOf::EMail",
+            "value": null
+        },
+        {
+            "name": "name",
+            "type": "Text",
+            "value": null
+        },
+        {
+            "name": "description",
+            "type": "Text",
+            "value": null
+        }
+    ]
+}

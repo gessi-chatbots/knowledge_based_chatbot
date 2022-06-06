@@ -13,7 +13,6 @@ from rasa.shared.nlu.training_data.message import Message
 from rasa.shared.nlu.training_data.training_data import TrainingData
 
 
-# TODO: Correctly register your component with its type
 @DefaultV1Recipe.register([DefaultV1Recipe.ComponentType.ENTITY_EXTRACTOR], is_trainable=True)
 class FuzzyWuzzyComponent(GraphComponent, EntityExtractorMixin):
     def __init__(self, component_config: Optional[Dict[Text, Any]] = None) -> None:
@@ -61,7 +60,6 @@ class FuzzyWuzzyComponent(GraphComponent, EntityExtractorMixin):
 
             entities_fixed.append(entity)
 
-        print(entities_fixed)
         return entities_fixed
 
     def train(self, training_data: TrainingData) -> Resource:

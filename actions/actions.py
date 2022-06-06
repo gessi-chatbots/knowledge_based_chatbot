@@ -73,7 +73,7 @@ class ActionDefaultFallback(ActionQueryKnowledgeBase):
 
 class RequestInformationEvent(Action):
     def __init__(self):
-        RequestInformationEvent.eh = EventHandler("calendar")
+        RequestInformationEvent.eh = EventHandler()
 
     def name(self):
         return "action_request_information"
@@ -83,9 +83,15 @@ class RequestInformationEvent(Action):
     ) -> List[Dict[Text, Any]]:
         if RequestInformationEvent.eh.get_current_key_value() > -1:
             for obj in tracker.latest_message["entities"]:
-                if obj["entity"] == "information":
-                    RequestInformationEvent.eh.set_information(obj["value"])
-
+                count = RequestInformationEvent.eh.count_properties(obj["entity"].replace("information_", ""))
+                if count > 0:
+                    #TODO: contextualize the information
+                    if obj["entity"] == "information_email":
+                        RequestInformationEvent.eh.set_information(obj["value"])
+                    elif obj["entity"] == "information_text":
+                        RequestInformationEvent.eh.set_information(obj["value"])
+                    elif obj["entity"] == "information_calendar":
+                        RequestInformationEvent.eh.set_information(obj["value"])
         if RequestInformationEvent.eh.hasNextSlot():
             msg = (
                 "Please provide the following information: "
@@ -99,3 +105,13 @@ class RequestInformationEvent(Action):
                 + RequestInformationEvent.eh.dispatchEventInfo()
             )
             RequestInformationEvent.eh.reset()
+
+
+class ValidateEvent(Action):
+    def name(self):
+        return "action_validate_event"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        RequestInformationEvent.eh.write_to_file()

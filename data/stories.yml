@@ -33,3 +33,5 @@ stories:
   - action: action_request_information
   - intent: inform
   - action: action_request_information
+  - intent: validate
+  - action: action_validate_event

@@ -31,5 +31,8 @@ rules:
   - intent: inform
   - action: action_request_information
 
-
+- rule: validate information given by the user
+  steps:
+  - intent: validate
+  - action: action_validate_event
 
