@@ -23,8 +23,11 @@ Great! Then let's launch OsmAnd!
 - \actions
   - ActionQueryKnowledgeBase.py: base actions that can be done using the current knowledge base
   - actions.py: actions that our chatbot can 
-  - customComponents.py: custom components used within the chatbot, current FuzzyWuzzyComponent used to identify synonyms and correct spelling errors
   - KnowledgeBase.py: Connection with our knowledge based used to extract and manipulate data from it.
+- \components
+  - DateComponent: Detects dates in messages (including 'today', 'tomorrow', etc.) and standardizes date format
+  - EmailComponent: Detects emails in messages using regex
+  - FuzzyWuzzyComponent: custom components used within the chatbot, current FuzzyWuzzyComponent used to identify synonyms and correct spelling errors
 - \data
   - nlu.yml: Training data stores structured information about user messages.
   - rules.yml: Training data used to train the chatbots dialogue management model, short pieces of conversations that should always follow the same path.
@@ -67,6 +70,11 @@ Libraries, frameworks, engines, tools, third-party services...
 ## How to use (from CLI)
 1. Enter _rasa train_ to train new model
 2. Enter _rasa shell_ to interact with chatbot from CLI
+3. Enjoy!
+
+## How to use alongside chatbot_client
+1. Enter _rasa run --enable-api --cors "*"_
+2. Run chatbot client
 3. Enjoy!
 
 ## Notes for developers
