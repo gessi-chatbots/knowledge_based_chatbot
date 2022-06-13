@@ -5,18 +5,35 @@ from dateutil import parser
 
 class EventHandler:
     def __init__(self):
-        file = "init-payload.json"
-        with open(file, "r") as f:
+        self.file = "init-payload.json"
+        self.get_info()
+        self.key = -1
+
+    def get_info(self):
+        with open(self.file, "r") as f:
             self.text = json.load(f)
         self.dict = self.text["target_data"]
-        print(self.dict)
-        self.key = -1
+    
+    def set_text(self, text):
+        print("RECIEVED TEXT + SETTING UP")
+        print(text)
+        self.text = text["initial_data"]
+        self.dict = self.text["target_data"]
+
+    def get_initial_message(self):
+        s = "Let's get started! The following information is required: \n"
+        for x in self.dict:
+            s += "  - " + x["name"] + "\n"
+        
+        s += '\n'
+        return s
 
     def get_current_key_value(self):
         return self.key
     
     def get_next_slot(self):
         self.aug_key()
+        print(self.dict[self.key])
         return self.dict[self.key]["name"]
 
     def aug_key(self):
@@ -62,6 +79,7 @@ class EventHandler:
         self.dict = {}
         self.slots = []
         self.key = 0
+        self.get_info()
     
     def write_to_file(self):
         file = "end-payload.json"

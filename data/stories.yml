@@ -29,8 +29,8 @@ stories:
   steps:
   - intent: greet
   - action: utter_greet
-  - intent: create_calendar_event
-  - action: action_request_information
+  - intent: create_event
+  - action: action_create_event
   - intent: inform
   - action: action_request_information
   - intent: validate

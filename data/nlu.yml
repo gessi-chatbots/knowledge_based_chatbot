@@ -708,7 +708,7 @@ nlu:
     - What is 2+2?
     - Who's the US President?)
 
-- intent: create_calendar_event
+- intent: create_event
   examples: |
     - I want to create a calendar event for my route
     - calendar event for route

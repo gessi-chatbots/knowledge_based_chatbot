@@ -5,7 +5,7 @@ intents:
   - goodbye
   - find_feature
   - specify_feature
-  - create_calendar_event
+  - create_event
   - inform
   - validate
 
@@ -93,6 +93,7 @@ actions:
 - action_find_feature
 - action_request_information
 - action_validate_event
+- action_create_event
 
 session_config:
   session_expiration_time: 60
