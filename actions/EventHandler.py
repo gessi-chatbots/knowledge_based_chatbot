@@ -78,7 +78,7 @@ class EventHandler:
     def reset(self):
         self.dict = {}
         self.slots = []
-        self.key = 0
+        self.key = -1
         self.get_info()
     
     def write_to_file(self):
