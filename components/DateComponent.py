@@ -50,8 +50,8 @@ class DateComponent(GraphComponent, EntityExtractorMixin):
     def _check_found_dates(self, entities: List[Dict[Text, Any]], dates: List[Text]) -> List[Dict[Text, Any]]:
         entities_fixed = entities
 
-        for entity in entities:
-            if entity["entity"] == "information_email":
+        for entity in entities_fixed:
+            if entity["entity"] == "information_date":
                 if entity["value"] in dates:
                     dates.remove(entity["value"])
         

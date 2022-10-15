@@ -35,3 +35,16 @@ stories:
   - action: action_request_information
   - intent: validate
   - action: action_validate_event
+
+- story: happy path new story 1
+  steps:
+  - intent: greet
+  - action: utter_greet
+  - intent: create_event
+  - action: action_create_event
+  - intent: inform
+  - action: action_request_information
+  - intent: wrong_input
+  - action: action_correct_event
+  - intent: validate
+  - action: action_validate_event

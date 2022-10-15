@@ -748,3 +748,13 @@ nlu:
     - Ok
     - Thanks
     - Yes, thank you
+
+- intent: wrong_inputs
+  examples: |
+    - No! Number [2](mention) is wrong.
+    - No! Number [9](mention) is wrong.
+    - The [first](mention) one is wrong.
+    - No.
+    - Number [5](mention) should be [August 25th](information_calendar)
+    - Number [6](mention) should be [ccg.campas@gmail.com](information_email)
+    - Number [8](mention) should be [if sunny we go bowling otherwise we watch a movie](information_email)

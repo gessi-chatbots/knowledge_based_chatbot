@@ -1,3 +1,4 @@
+from re import A
 from typing import Any, Dict, List, Text
 
 from rasa_sdk import Action, Tracker
@@ -8,6 +9,7 @@ from actions.ActionQueryKnowledgeBase import ActionQueryKnowledgeBase
 from actions.EventHandler import EventHandler
 
 eh = EventHandler()
+
 class findFeautre(ActionQueryKnowledgeBase):
     def name(self):
         return "action_find_feature"
@@ -68,6 +70,7 @@ class ActionDefaultFallback(ActionQueryKnowledgeBase):
         if (found and super().getCurrentAppSize() == 0) or (not found):
             return [UserUtteranceReverted()]
 
+
 class CreateEvent(Action):
     def name(self):
         return "action_create_event"
@@ -90,6 +93,7 @@ class RequestInformationEvent(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
         if eh.get_current_key_value() > -1:
+            #at.process_message(tracker.latest_message["text"])
             for obj in tracker.latest_message["entities"]:
                 count = eh.count_properties(obj["entity"].replace("information_", ""))
                 if count > 0:
@@ -124,3 +128,13 @@ class ValidateEvent(Action):
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
         eh.write_to_file()
+
+
+class CorrectWrongInput(Action):
+    def name(self):
+        return "action_correct_event"
+
+    def run(
+        self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
+    ) -> List[Dict[Text, Any]]:
+        pass

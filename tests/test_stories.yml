@@ -2,90 +2,67 @@
 #### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
 
 stories:
-- story: happy path 1
+- story: simple greet
   steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
+    - user: |
+        good morning!
+      intent: greet
+    - action: utter_greet
 
-- story: happy path 2
+- story: test find feature num. 1 - two features
   steps:
-  - user: |
-      hello there!
-    intent: greet
-  - action: utter_greet
-  - user: |
-      amazing
-    intent: mood_great
-  - action: utter_happy
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
+    - user: |
+        hello
+      intent: greet
+    - action: utter_greet
+    - user: |
+        I want to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+      intent: find_feature
+    - action: action_find_feature
+    - user: |
+        Whichever has [Real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+      intent: find_feature
+    - action: action_find_feature
 
-- story: sad path 1
+- story: test find feature num - 2 - feature + mention
   steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      yes
-    intent: affirm
-  - action: utter_happy
+    - user: |
+        hello
+      intent: greet
+    - action: user_greet
+    - user: |
+        I want to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+      intent: find_feature
+    - action: action_find_feature
+    - user: |
+        the [first]{"entity": "mention", "value": "1"} one
+      intent: find_feature
+    - action: action_find_feature
 
-- story: sad path 2
+- story: test find feature num. 3 - feature + wrong mention
   steps:
-  - user: |
-      hello
-    intent: greet
-  - action: utter_greet
-  - user: |
-      not good
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      not really
-    intent: deny
-  - action: utter_goodbye
+    - user: |
+        hello
+      intent: greet
+    - action: user_greet
+    - user: |
+        I want to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"}
+      intent: find_feature
+    - action: action_find_feature
+    - user: |
+        the [ninth]{"entity": "mention", "value": "9"} one
+      intent: find_feature
+    - action: action_find_feature
 
-- story: sad path 3
+- story: test find feature num. 4 - two features one 
   steps:
-  - user: |
-      hi
-    intent: greet
-  - action: utter_greet
-  - user: |
-      very terrible
-    intent: mood_unhappy
-  - action: utter_cheer_up
-  - action: utter_did_that_help
-  - user: |
-      no
-    intent: deny
-  - action: utter_goodbye
+    - user: |
+        hello
+      intent: greet
+    - action: user_greet
+    - user: |
+        Ask app to activate [GPS Navigation]{"entity": "features", "value": "GPS Navigation"} with [Real-time traffic]{"entity": "features", "value": "Real-time traffic"}
+      intent: find_feature
+    - action: action_find_feature
 
-- story: say goodbye
-  steps:
-  - user: |
-      bye-bye!
-    intent: goodbye
-  - action: utter_goodbye
-
-- story: bot challenge
-  steps:
-  - user: |
-      are you a bot?
-    intent: bot_challenge
-  - action: utter_iamabot
+- story: test happy path num. 1

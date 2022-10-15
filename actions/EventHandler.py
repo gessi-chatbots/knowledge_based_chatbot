@@ -13,6 +13,15 @@ class EventHandler:
         with open(self.file, "r") as f:
             self.text = json.load(f)
         self.dict = self.text["target_data"]
+
+        self.type = set()
+        self.type_set_of = set()
+        for d in self.dict:
+            t = d["type"]
+            if "SefOf" in t:
+                self.type_set_of.update([t.split("::")[1]])
+            else:
+                self.type.update(t)
     
     def set_text(self, text):
         print("RECIEVED TEXT + SETTING UP")

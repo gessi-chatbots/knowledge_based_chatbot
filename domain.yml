@@ -8,6 +8,7 @@ intents:
   - create_event
   - inform
   - validate
+  - wrong_input
 
 responses:
   utter_greet:
@@ -94,6 +95,7 @@ actions:
 - action_request_information
 - action_validate_event
 - action_create_event
+- action_correct_event
 
 session_config:
   session_expiration_time: 60

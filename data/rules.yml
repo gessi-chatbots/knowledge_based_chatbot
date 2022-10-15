@@ -41,3 +41,8 @@ rules:
   - intent: validate
   - action: action_validate_event
 
+- rule: wrong information on input
+  steps:
+  - intent: wrong_inputs
+  - action: action_correct_event
+
