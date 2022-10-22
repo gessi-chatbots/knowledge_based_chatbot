@@ -66,3 +66,28 @@ stories:
     - action: action_find_feature
 
 - story: test happy path num. 1
+  steps:
+    - user: |
+        hello
+      intent: greet
+    - action: user_greet
+    - user: |
+        I want to create a calendar event for my route
+      intent: create_event
+    - action: action_create_event
+    - user: |
+        [August 25th](information_calendar)
+      intent: inform
+    - action: action_request_information
+    - user: |
+        [August 26th](information_calendar)
+      intent: inform
+    - action: action_request_information
+    - user: |
+        Send a request to [carla.campas@upc.edu](information_email) and [joaquim.motger@upc.edu](information_email)
+      intent: inform
+    - action: action_request_information
+    - user: |
+        [if sunny we go bowling otherwise we watch a movie](information_text)
+      intent: inform
+    - action: action_request_information

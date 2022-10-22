@@ -1,0 +1,86 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: test date num. 1
+  steps:
+    - user: |
+        [August 25th](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/08/25 00:00:00
+    - action: action_request_information
+
+- story: test date num. 2
+  steps:
+    - user: |
+        [August 25th at 15:00](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/08/25 15:00:00
+    - action: action_request_information
+  
+- story: test date num. 3
+  steps:
+    - user: |
+        [25/09/2022](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/09/25 00:00:00
+    - action: action_request_information
+
+# This test should be modified to be careful that we are testing the
+# correct time
+#- story: test date num. 4
+#  steps:
+#    - user: |
+#        [today](information_calendar)
+#      intent: inform
+#    - entities: 
+#      - information_calendar: 2022/09/20 00:00:00
+#    - action: action_request_information
+
+#- story: test date num. 5
+#  steps:
+#    - user: |
+#        [tomorrow](information_calendar)
+#      intent: inform
+#    - entities: 
+#      - information_calendar: 2022/08/25 00:00:00
+#    - action: action_request_information
+  
+- story: test date num. 3
+  steps:
+    - user: |
+        [2022/09/24](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/09/24 00:00:00
+    - action: action_request_information
+
+- story: test date num. 3
+  steps:
+    - user: |
+        [2022-09-04](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/09/04 00:00:00
+    - action: action_request_information
+    
+- story: test date num. 3
+  steps:
+    - user: |
+        [24th September 1999](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 1999/09/23 00:00:00
+    - action: action_request_information
+
+- story: test date num. 3
+  steps:
+    - user: |
+        [20220904](information_calendar)
+      intent: inform
+    - entities: 
+      - information_calendar: 2022/09/04 00:00:00
+    - action: action_request_information

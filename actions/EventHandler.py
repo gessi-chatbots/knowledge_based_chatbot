@@ -24,8 +24,6 @@ class EventHandler:
                 self.type.update(t)
     
     def set_text(self, text):
-        print("RECIEVED TEXT + SETTING UP")
-        print(text)
         self.text = text["initial_data"]
         self.dict = self.text["target_data"]
 

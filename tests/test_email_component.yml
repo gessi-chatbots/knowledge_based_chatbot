@@ -1,0 +1,37 @@
+#### This file contains tests to evaluate that your bot behaves as expected.
+#### If you want to learn more, please see the docs: https://rasa.com/docs/rasa/testing-your-assistant
+
+stories:
+- story: test email num. 1
+  steps:
+    - user: |
+        [ccg.campas@gmail.com](information_email)
+      intent: inform
+    - entities: 
+      - information_email: ccg.campas@gmail.com
+    - action: action_request_information
+
+- story: test email num. 2
+  steps:
+    - user: |
+        [ccg.campas@upc.com](information_email)
+      intent: inform
+    - entities: 
+      - information_email: ccg.campas@upc.com
+    - action: action_request_information
+
+- story: test email num. 3
+  steps:
+    - user: |
+        [carla.campas@estudiantat.upc.edu](information_email)
+      intent: inform
+    - entities: 
+      - information_email: carla.campas@estudiantat.upc.edu
+    - action: action_request_information
+
+- story: test email num. 4
+  steps:
+    - user: |
+        [carla.campas@estudiantat](information_email)
+      intent: inform
+    - action: action_request_information
