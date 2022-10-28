@@ -23,6 +23,12 @@ class ActionQueryKnowledgeBase(Action):
     def name(self):
         return "action_query_data_base"
 
+    def getCurrentApps(self) -> int:
+        return ActionQueryKnowledgeBase.currentApps
+
+    def setCurrentApps(self, currentApps) -> None:
+        self.currentApps = currentApps
+        
     # amount of apps after filtering
     def getCurrentAppSize(self) -> int:
         return len(ActionQueryKnowledgeBase.currentApps)

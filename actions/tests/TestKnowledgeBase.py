@@ -24,28 +24,3 @@ class TestKnowledgeBase(unittest.TestCase):
             for value in ff[header]:
                 kb.updateFilterFeatures(header, [value])
         self.assertEqual(kb.getFilterFeatures(), ff)
-
-class TestActionQueryKnowledgeBase(unittest.TestCase):
-    def test_searchInApps(self):
-        print ("hello world")
-    
-    def test_filterCurrentApps(self):
-        print("hello world")
-
-    def test_inHeaders(self):
-        print("hello world")
-    
-    def test_treatMention(self):
-        print("hello world")
-
-
-class TestFindFeature (unittest.TestCase):
-    def test_run(self):
-        print("hello world")
-
-class TestActionDefaultFallback(unittest.TestCase):
-    def test_run(self):
-        print("hello world")
-
-if __name__ == '__main__':
-    unittest.main()
