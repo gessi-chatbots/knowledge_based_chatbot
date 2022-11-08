@@ -16,8 +16,10 @@ class EventHandler:
 
         self.type = set()
         self.type_set_of = set()
+        self.amount_type = dict()
         for d in self.dict:
             t = d["type"]
+            self.amount_type[d["type"]] += 1
             if "SefOf" in t:
                 self.type_set_of.update([t.split("::")[1]])
             else:
@@ -63,6 +65,29 @@ class EventHandler:
                 d["value"] = v
             else:
                 d["value"].append(value)
+        
+        self.dict[self.key] = d
+        print(d)
+    
+    def set_information(self, value, attention):
+        d = self.dict[self.key]
+        for d in self.dict:
+            if d["type"] in attention:
+                if d["value"] is None:
+                    if "SetOf" in d["type"]:
+                        d["value"] = [value]
+                    else:
+                        d["value"] = value
+                else:
+                    if not("SetOf" in d["type"]):
+                        v = d["value"] + " " + value
+
+                        if d["type"] == "Calendar":
+                            v = str(parser.parse(v))
+
+                        d["value"] = v
+                    else:
+                        d["value"].append(value)
         
         self.dict[self.key] = d
         print(d)

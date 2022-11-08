@@ -7,6 +7,7 @@ from rasa_sdk.executor import CollectingDispatcher
 
 from actions.ActionQueryKnowledgeBase import ActionQueryKnowledgeBase
 from actions.EventHandler import EventHandler
+from actions.Attention import Attention
 
 eh = EventHandler()
 
@@ -92,6 +93,7 @@ class RequestInformationEvent(Action):
     async def run(
         self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]
     ) -> List[Dict[Text, Any]]:
+        attention = Attention(tracker.latest_message["text"])
         if eh.get_current_key_value() > -1:
             #at.process_message(tracker.latest_message["text"])
             for obj in tracker.latest_message["entities"]:
@@ -103,7 +105,8 @@ class RequestInformationEvent(Action):
                     elif obj["entity"] == "information_text":
                         eh.set_information(obj["value"])
                     elif obj["entity"] == "information_calendar":
-                        eh.set_information(obj["value"])
+                        eh.set_information(obj["value"], attention[obj["value"]])
+
         if eh.hasNextSlot():
             msg = (
                 f"""Please provide the '{eh.get_next_slot()}': """
