@@ -22,7 +22,6 @@ pipeline:
   epochs: 100
   constrain_similarities: true
 - name: components.FuzzyWuzzyComponent.FuzzyWuzzyComponent
-- name: components.EmailComponent.EmailComponent
 - name: components.DateComponent.DateComponent
 - name: EntitySynonymMapper
 - name: ResponseSelector
@@ -31,6 +30,8 @@ pipeline:
 - name: FallbackClassifier
   threshold: 0.3
   ambiguity_threshold: 0.1
+
+#- name: components.EmailComponent.EmailComponent
 
 # Configuration for Rasa Core.
 # https://rasa.com/docs/rasa/core/policies/

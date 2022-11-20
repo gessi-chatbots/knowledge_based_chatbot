@@ -16,10 +16,12 @@ class EventHandler:
 
         self.type = set()
         self.type_set_of = set()
-        self.amount_type = dict()
+        self.amount_type = {}
         for d in self.dict:
             t = d["type"]
-            self.amount_type[d["type"]] += 1
+            if t not in self.amount_type.keys(): self.amount_type[t] = 0
+            self.amount_type[t] += 1
+            
             if "SefOf" in t:
                 self.type_set_of.update([t.split("::")[1]])
             else:

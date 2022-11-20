@@ -105,7 +105,7 @@ class RequestInformationEvent(Action):
                     elif obj["entity"] == "information_text":
                         eh.set_information(obj["value"])
                     elif obj["entity"] == "information_calendar":
-                        eh.set_information(obj["value"], attention[obj["value"]])
+                        eh.set_information(obj["value"], attention.get_attention_at([obj["value"]]))
 
         if eh.hasNextSlot():
             msg = (
