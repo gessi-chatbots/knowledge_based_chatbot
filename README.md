@@ -4,7 +4,7 @@ Knowledge based chatbot to find apps with desired features. Currently working on
 ## Description
 Uses JSON files to provide knowledge base to the chatbot. Using the Rasa interface this chatbot allows smart user-machine interaction. This chatbot allows user to select a distinct application based on their preferred features.
 
-## Sample Story
+## Sample Story -- find app by features
 ````
 Your input ->  hello                                                                   
 Hello! I am a mobile app assistant. Which features do you need help with?
@@ -16,6 +16,36 @@ Do you wish to use any app in particular?
 Your input ->  Whichever has Real-time traffic                                         
 Great! Then let's launch OsmAnd!
 
+````
+
+## Sample Story -- Generate 
+````
+Your input -> hello                                                             
+Hello! I am a mobile app assistant. Which features do you need help with?
+Your input ->  I want to create a calendar event for my route
+Let's get started! The following information is required:
+  - start date/time
+  - end date/time
+  - invites
+  - name
+  - description
+Please provide the 'start date/time':
+Your input ->  August 25th
+Please provide the 'end date/time':
+Your input ->  August 26th
+Please provide the 'invites':
+Your input ->  ccg.campas@gmail.com
+Please provide the 'name':
+Your input -> Route Event
+Please provide the 'description':
+Your input -> If sunny we go on a hike!
+Thank you got your information!
+Please confirm the following is correct:
+  - start date/time: August 25th
+  - end date/time: August 26th
+  - invites: ccg.campas@gmail.com
+  - name: Route Event
+  - description: If sunny we go on a hike!
 ````
 
 ## File structure
@@ -56,6 +86,8 @@ Libraries, frameworks, engines, tools, third-party services...
 |rasa|Open source framework for NLU, dialogue, and integrations.|>=3.0.0|
 |fuzzywuzzy|uses Levenshtein Distance to calculate the differences between sequences in a simple-to-use package|0.2.0|
 |NLTK|provides easy-to-use interfaces to over 50 corpora and lexical resources|3.6.6|
+|re|Python regex library||
+|datefinder|Finding and reformatting input dates||
 
 ## How to install
 1. Install Rasa [https://rasa.com/docs/rasa/installation/]
