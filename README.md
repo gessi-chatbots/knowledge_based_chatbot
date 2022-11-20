@@ -54,6 +54,8 @@ Please confirm the following is correct:
   - ActionQueryKnowledgeBase.py: base actions that can be done using the current knowledge base
   - actions.py: actions that our chatbot can 
   - KnowledgeBase.py: Connection with our knowledge based used to extract and manipulate data from it.
+  - EventHandler.py: Class controls input requirements from user for feature integrations between two different types.
+  - Attention: obtains the attention on input for disambiguation of types
 - \components
   - DateComponent: Detects dates in messages (including 'today', 'tomorrow', etc.) and standardizes date format
   - EmailComponent: Detects emails in messages using regex
@@ -66,9 +68,13 @@ Please confirm the following is correct:
 - \scripts
   - json-to-nlu.py: Convert JSON (rasa_knowledge_base.json) file to NLU file that the chatbot can train with.
   - nltk_data.py: Download required NLTK package.
-  - proactive-bot.py: Starts conversation with rasa chatbot externally. 
+  - proactive-bot.py: Starts conversation with rasa chatbot externally.
+- \test_python: scripts to generate tests with current data (specifically date tests)
 - \tests
   - test_stories.yml: validate and test dialogues end-to-end by running through test stories
+  - test_data_component.yml: test correct function of date identification component
+  - test_email_component.yml: test correct function of email identification component
+  - test_fuzzywuzzy_component.yml: test correct function of fuzzywuzzy component (input spelling errors fixed).
 - \
   - config.yml: defines the components and policies that your model will use to make predictions based on user input.
   - credentials.yml: credentials for the Rasa X channel
